@@ -21,16 +21,12 @@ var app = express();
 // Point to static starting path point
 app.use("/public",express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json());
+app.use(express.json());
 app.set('view engine', 'ejs');
 
 // Set the port
 var port_number = process.env.PORT || 5000;
 
-// Listen
-app.listen(port_number,() => {
-    console.log(`Listening on port ${port_number}`);
-});
 
 // Root route
 app.get('/',(req, res) => {
@@ -48,3 +44,25 @@ app.get('/retrieve',(req,res) => {
     console.log("trying to retrieve");
     res.send(JSON.stringify(retrieveDataToSend()));
 })
+
+const users = []
+
+app.get('/users', (req,res) => {
+    res.json(users);
+})
+
+app.post('/users', (req, res) => {
+    const user = {
+        name: req.body.name,
+        password: req.body.password
+    }
+    users.push(user);
+    res.status(201).send();
+})
+
+
+
+// Listen
+app.listen(port_number,() => {
+    console.log(`Listening on port ${port_number}`);
+});
