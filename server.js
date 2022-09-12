@@ -6,9 +6,6 @@ import ejs from 'ejs';
 import path from 'path';
 import bodyParser from 'body-parser';
 
-import { processDataForDatabase, retrieveDataToSend}
-    from "./backend/processing/dataForwarding.js"
-
 // https://stackoverflow.com/questions/8817423/why-is-dirname-not-defined-in-node-repl
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -30,39 +27,45 @@ var port_number = process.env.PORT || 5000;
 
 // Root route
 app.get('/',(req, res) => {
-    res.sendFile(path.join(__dirname,'/public/html/index.html'));
+    res.sendFile(path.join(__dirname,'/public/login/login.html'));
 })
-
-
-
-app.post('/test',(req,res) => {
-    console.log("trying to add");
-    processDataForDatabase(req.body);
-});
-
-app.get('/retrieve',(req,res) => {
-    console.log("trying to retrieve");
-    res.send(JSON.stringify(retrieveDataToSend()));
-})
-
-const users = []
-
-app.get('/users', (req,res) => {
-    res.json(users);
-})
-
-app.post('/users', (req, res) => {
-    const user = {
-        name: req.body.name,
-        password: req.body.password
-    }
-    users.push(user);
-    res.status(201).send();
-})
-
 
 
 // Listen
 app.listen(port_number,() => {
     console.log(`Listening on port ${port_number}`);
 });
+
+
+
+
+
+
+
+
+// app.post('/test',(req,res) => {
+//     console.log("trying to add");
+//     processDataForDatabase(req.body);
+// });
+
+// app.get('/retrieve',(req,res) => {
+//     console.log("trying to retrieve");
+//     res.send(JSON.stringify(retrieveDataToSend()));
+// })
+
+// const users = []
+
+// app.get('/users', (req,res) => {
+//     res.json(users);
+// })
+
+// app.post('/users', (req, res) => {
+//     const user = {
+//         name: req.body.name,
+//         password: req.body.password
+//     }
+//     users.push(user);
+//     res.status(201).send();
+// })
+
+
