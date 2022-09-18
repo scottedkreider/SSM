@@ -1,11 +1,80 @@
-GET http://localhost:5000/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS3lsZSIsImlhdCI6MTY2MzM2MDk2MX0.uu5YEHevoUcGhPSMxdhhga8Ufsbt-PbbN3QV3HvBMec
+// Registering users
+
+POST http://localhost:5000/api/auth/signup HTTP/1.1
+content-type: application/json
+
+{
+    "username": "moderator",
+    "email": "mod@scotttest.com",
+    "password": "TheBestPassword",
+    "roles": ["user","moderator"]
+}
 
 ###
 
-POST http://localhost:5000/login
-Content-Type: application/json
+POST http://localhost:5000/api/auth/signup HTTP/1.1
+content-type: application/json
 
 {
-    "username": "Kyle"
+    "username": "user",
+    "email": "user@scotttest.com",
+    "password": "TheSecondBestPassword",
+    "roles": ["user"]
 }
+
+###
+
+POST http://localhost:5000/api/auth/signup HTTP/1.1
+content-type: application/json
+
+{
+    "username": "admin",
+    "email": "admin@scotttest.com",
+    "password": "TheMostBestPassword",
+    "roles": ["user","moderator","admin"]
+}
+
+###
+
+// Access public resources
+GET http://localhost:5000/api/test/all HTTP/1.1
+
+###
+
+// Access protected resources
+GET http://localhost:5000/api/test/user HTTP/1.1
+
+###
+
+// Login with wrong password
+POST http://localhost:5000/api/auth/signin HTTP/1.1
+content-type: application/json
+
+{
+    "username": "user",
+    "password": "fsdfsfd"
+}
+
+###
+
+// Login with correct password
+POST http://localhost:5000/api/auth/signin HTTP/1.1
+content-type: application/json
+
+{
+    "username": "moderator",
+    "password": "TheBestPassword"
+}
+
+###
+
+// Access protected resources
+GET http://localhost:5000/api/test/user HTTP/1.1
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMjc0MzJhZjBiNDk2NTllNmY0MzA2ZSIsImlhdCI6MTY2MzUyNjI4NSwiZXhwIjoxNjYzNjEyNjg1fQ.m1JezhcW3d1cJixKramDAnfNucBqM1s3-46PluvpsWg
+
+###
+
+// Access protected resources
+GET http://localhost:5000/api/test/admin HTTP/1.1
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMjc0MzJhZjBiNDk2NTllNmY0MzA2ZSIsImlhdCI6MTY2MzUyNjI4NSwiZXhwIjoxNjYzNjEyNjg1fQ.m1JezhcW3d1cJixKramDAnfNucBqM1s3-46PluvpsWg
+

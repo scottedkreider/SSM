@@ -6,7 +6,7 @@ dotenv.config();
 const app = express();
 
 var corsOptions = {
-    origin: "http://localhost:5000"
+    origin: "http://localhost:5001"
 }
 app.use(cors(corsOptions));
 
@@ -16,8 +16,9 @@ app.use(express.urlencoded({extended: true}));
 const db = require("./app/models")
 const Role = db.role;
 
+
 db.mongoose
-    .connect("")
+    .connect("mongodb+srv://scottedkreider:MongoAdmin1234@cluster0.xfkqs.mongodb.net/?retryWrites=true&w=majority")
     .then(() => {
         console.log("Successfully connected to MongoDB");
         initial();
@@ -27,7 +28,8 @@ db.mongoose
         process.exit();
     });
 
-function intial(){
+    
+function initial(){
     Role.estimatedDocumentCount((err, count) => {
         if(!err && count === 0){
             new Role({
@@ -60,9 +62,14 @@ function intial(){
     })
 }
 
+
 app.get("/", (req, res) => {
     res.json({message: "Welcome!"});
 })
+
+// routes
+require('./app/routes/auth.routes')(app);
+require('./app/routes/user.routes')(app);
 
 app.listen(process.env.PORT || 5000, () => {
   console.log("Server is live on port 5000");
