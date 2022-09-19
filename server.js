@@ -1,68 +1,76 @@
-"use strict";
+const express = require("express");
+const cors = require("cors");
+const dotenv = require("dotenv");
 
-// Load node modules
-import express from 'express';
-import ejs from 'ejs';
-import path from 'path';
-import bodyParser from 'body-parser';
+dotenv.config();
+const app = express();
 
-import { processDataForDatabase, retrieveDataToSend}
-    from "./backend/processing/dataForwarding.js"
+var corsOptions = {
+    origin: "http://localhost:5001"
+}
+app.use(cors(corsOptions));
 
-// https://stackoverflow.com/questions/8817423/why-is-dirname-not-defined-in-node-repl
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-// Initialize express
-var app = express();
-
-// Point to static starting path point
-app.use("/public",express.static('public'));
-app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json());
-app.set('view engine', 'ejs');
+app.use(express.urlencoded({extended: true}));
 
-// Set the port
-var port_number = process.env.PORT || 5000;
+const db = require("./app/models")
+const Role = db.role;
 
 
-// Root route
-app.get('/',(req, res) => {
-    res.sendFile(path.join(__dirname,'/public/html/index.html'));
+db.mongoose
+    .connect("mongodb+srv://scottedkreider:MongoAdmin1234@cluster0.xfkqs.mongodb.net/?retryWrites=true&w=majority")
+    .then(() => {
+        console.log("Successfully connected to MongoDB");
+        initial();
+    })
+    .catch(err => {
+        console.error("Connection error", err);
+        process.exit();
+    });
+
+    
+function initial(){
+    Role.estimatedDocumentCount((err, count) => {
+        if(!err && count === 0){
+            new Role({
+                name: "user"
+                }).save(err => {
+                    if(err) {
+                        console.log("error",err);
+                    }
+                    console.log("added 'user' to roles collection");
+                });
+
+            new Role({
+                name: "moderator"
+                }).save(err => {
+                    if (err) {
+                        console.log("error", err);
+                    }
+                    console.log("added 'moderator' to roles collection");
+                });
+
+            new Role({
+                name: "admin"
+                }).save(err => {
+                    if (err) {
+                        console.log("error", err);
+                    }
+                    console.log("added 'admin' to roles collection");
+                });
+        }
+    })
+}
+
+
+app.get("/", (req, res) => {
+    res.json({message: "Welcome!"});
 })
 
+// routes
+require('./app/routes/auth.routes')(app);
+require('./app/routes/user.routes')(app);
 
-
-app.post('/test',(req,res) => {
-    console.log("trying to add");
-    processDataForDatabase(req.body);
-});
-
-app.get('/retrieve',(req,res) => {
-    console.log("trying to retrieve");
-    res.send(JSON.stringify(retrieveDataToSend()));
+app.listen(process.env.PORT || 5000, () => {
+  console.log("Server is live on port 5000");
 })
-
-const users = []
-
-app.get('/users', (req,res) => {
-    res.json(users);
-})
-
-app.post('/users', (req, res) => {
-    const user = {
-        name: req.body.name,
-        password: req.body.password
-    }
-    users.push(user);
-    res.status(201).send();
-})
-
-
-
-// Listen
-app.listen(port_number,() => {
-    console.log(`Listening on port ${port_number}`);
-});
