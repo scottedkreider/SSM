@@ -11,7 +11,6 @@ exports.allAccess = (req, res) => {
   };
 
   exports.deleteAccount = (req, res) => {
-    console.log(req.body.username)
       User.deleteOne({
         username: req.body.username
       })
@@ -21,9 +20,6 @@ exports.allAccess = (req, res) => {
             return;
           }
     
-          res.status(200).send({
-            username: user.username,
-            message: "deleted"
-          });
+          res.status(200).send({ message: "user successfully deleted" });
         });
   }
