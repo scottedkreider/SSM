@@ -10,9 +10,14 @@ module.exports = function(app) {
     next();
   });
 
-  app.get("/api/test/all", controller.allAccess);
+  app.get("/api/test/all"
+    ,controller.allAccess);
 
-  app.get("/api/test/user", [authJwt.verifyToken], controller.userBoard);
+  app.get("/api/test/user"
+    ,[authJwt.verifyToken]
+    ,controller.userBoard);
 
-  app.post("/api/test/delete-account", [authJwt.verifyToken], controller.deleteAccount);
+  app.post("/api/test/delete-account"
+    ,[authJwt.verifyToken]
+    ,controller.deleteAccount);
 };

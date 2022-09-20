@@ -46,7 +46,7 @@ content-type: application/json
 
 // Access protected resources
 GET http://localhost:5000/api/test/user HTTP/1.1
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMjkyOWRkN2U1YTg3ZDVhZjk3MzNhMCIsImlhdCI6MTY2MzY0MjIxNSwiZXhwIjoxNjYzNzI4NjE1fQ.ZAfZ7yvuOCCfJuHxd-DnEkjPV2Q6p3D1gdOhpMKc2GM
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMjkzNDgwMTgzNTg2ZmU4YzExNDYwMSIsImlhdCI6MTY2MzY0NDgyMCwiZXhwIjoxNjYzNzMxMjIwfQ.eU8RfCmqO5lneqBX922sgssKutmlAr3-GBAMhbHkQFE
 
 ###
 
@@ -60,3 +60,25 @@ content-type: application/json
 }
 
 ###
+
+// Save MMC Data
+POST http://localhost:5000/api/multiMonthCalendar HTTP/1.1
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMjkzNDgwMTgzNTg2ZmU4YzExNDYwMSIsImlhdCI6MTY2MzY0NDgyMCwiZXhwIjoxNjYzNzMxMjIwfQ.eU8RfCmqO5lneqBX922sgssKutmlAr3-GBAMhbHkQFE
+content-type: application/json
+
+{
+    "name": "the beginning"
+}
+###
+
+// Retrieve MMC Data
+GET http://localhost:5000/api/multiMonthCalendar HTTP/1.1
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMjkzNDgwMTgzNTg2ZmU4YzExNDYwMSIsImlhdCI6MTY2MzY0NDgyMCwiZXhwIjoxNjYzNzMxMjIwfQ.eU8RfCmqO5lneqBX922sgssKutmlAr3-GBAMhbHkQFE
+content-type: application/json
+
+{
+    "name": "the beginning"
+}
+###
+
+
