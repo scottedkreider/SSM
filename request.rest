@@ -46,6 +46,17 @@ content-type: application/json
 
 // Access protected resources
 GET http://localhost:5000/api/test/user HTTP/1.1
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMjdlNGNjZDZkZTcxZjJlNjhhODMwNCIsImlhdCI6MTY2MzU1ODg4MSwiZXhwIjoxNjYzNjQ1MjgxfQ.Kho8pXqY6y8_b553V608Roytp4OQHNC3q0Khn-TRC8Y
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMjkyOWRkN2U1YTg3ZDVhZjk3MzNhMCIsImlhdCI6MTY2MzY0MjIxNSwiZXhwIjoxNjYzNzI4NjE1fQ.ZAfZ7yvuOCCfJuHxd-DnEkjPV2Q6p3D1gdOhpMKc2GM
+
+###
+
+// Delete account
+POST http://localhost:5000/api/test/delete-account HTTP/1.1
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMjkyMTE2NWUxYTM2OTIyYzI2MTllMiIsImlhdCI6MTY2MzY0MDQwOSwiZXhwIjoxNjYzNzI2ODA5fQ.E7MFitx8ANcwTxmEpNOdVRt6ZStuUW8BS9UDsAK1Q6k
+content-type: application/json
+
+{
+    "username": "user1"
+}
 
 ###

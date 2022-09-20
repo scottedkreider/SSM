@@ -6,7 +6,7 @@ dotenv.config();
 const app = express();
 
 var corsOptions = {
-    origin: "http://localhost:5001"
+    origin: "http://localhost:5000"
 }
 app.use(cors(corsOptions));
 
