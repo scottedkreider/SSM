@@ -1,0 +1,41 @@
+@import "../css/index.css";
+
+input:disabled {
+    border: none;
+    color: #000;
+    background-color: transparent;
+}
+
+.taskCategoryDiv {
+    background-color: lightpink;
+    border-style: solid;
+}
+
+.taskDiv {
+    background-color: lightgreen;
+    text-indent: 50px;
+    border-style: dotted;
+}
+
+.multiMonthCalendarDisplay {
+    background-color: lightseagreen;
+    border-style: solid;
+}
+
+.wrapper {
+    background-color: black;
+
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    grid-gap: 1px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.wrapper > * {
+    background-color: lawngreen;
+}
+
+.container {
+    display: flex;
+}

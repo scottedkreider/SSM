@@ -1,0 +1,23 @@
+@import "../css/index.css";
+
+input:disabled {
+    border: none;
+    color: #000;
+    background-color: transparent;
+}
+
+.taskCategoryDiv {
+    background-color: lightpink;
+    border-style: solid;
+}
+
+.taskDiv {
+    background-color: lightgreen;
+    text-indent: 50px;
+    border-style: dotted;
+}
+
+.weeklyTaskListDisplay {
+    background-color: lightyellow;
+    border-style: solid;
+}

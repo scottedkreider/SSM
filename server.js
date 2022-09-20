@@ -1,17 +1,25 @@
+"use strict";
+
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const ejs = require("ejs");
+const path = require("path");
 
 dotenv.config();
 const app = express();
 
 var corsOptions = {
-    origin: "http://localhost:5000"
+    origin: "http://localhost:5001"
 }
 app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
+app.use("/public",express.static('public'));
+
+app.set('view engine', 'ejs');
 
 const db = require("./app/models")
 const Role = db.role;
@@ -28,8 +36,25 @@ db.mongoose
     });
 
 
-app.get("/", (req, res) => {
-    res.json({message: "Welcome!"});
+
+// Weekly Task List route
+app.get('/weeklyTaskList',(req, res) => {
+    console.log('weeklyTaskList');
+    res.render(path.join("pages/weeklyTaskList"));
+})
+
+// MultiMonthCalendar route
+app.get('/multiMonthCalendar',(req, res) => {
+    console.log('multiMonthCalendar');
+    // res.json({message: "Welcome!"});
+    res.render(path.join("pages/multiMonthCalendar"));
+})
+
+
+// Root route
+app.get('/',(req, res) => {
+    console.log('index');
+    res.render(path.join("pages/index"));
 })
 
 // routes
