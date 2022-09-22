@@ -1,3 +1,5 @@
+// Application backend architecture reference: https://www.bezkoder.com/node-js-mongodb-auth-jwt/
+
 "use strict";
 
 const express = require("express");
