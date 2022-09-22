@@ -1,7 +1,7 @@
 "use strict";
 
-import MultiMonthCalendarDisplay from "./multiMonthCalendar.Interface.js";
-import MultiMonthCalendarManager from "./multiMonthCalendar.Model.js";
+import MultiMonthCalendarDisplay from "../multiMonthCalendar/multiMonthCalendar.Interface.js";
+import MultiMonthCalendarManager from "../multiMonthCalendar/multiMonthCalendar.Model.js";
 
 export default function displayMultiMonthCalendar(){
     const indexDiv = document.getElementById("multiMonthCalendarDiv");

@@ -3,7 +3,7 @@
 import {
     mmcDateEntryForm, mmcCalendarDiv, deleteMMCDiv, checkAllDaysDiv,
     editDailyInfoDiv
-} from "../js/multiMonthCalendar.divSnippets.js";
+} from "./multiMonthCalendar.divSnippets.js";
 import {
     submitDatesListener, checkOffDaysListener,
     deleteMMCListener, checkAllDaysListener,

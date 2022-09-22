@@ -3,7 +3,7 @@
 import {
     deleteButtonDiv, editSaveToggleButtonDiv, editableTextInputDiv, editableDateInputDiv
     , addButtonDiv, taskCategoryDiv, taskDiv
-} from "../js/weeklyTaskList.divSnippets.js";
+} from "./weeklyTaskList.divSnippets.js";
 import { editorButtonsListener, addButtonsListener } from "./weeklyTaskList.EventListeners.js";
 import TaskList from "./weeklyTaskList.Model.js";
 

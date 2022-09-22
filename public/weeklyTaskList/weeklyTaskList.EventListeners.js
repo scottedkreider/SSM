@@ -2,7 +2,7 @@
 
 import {
     taskCategoryDiv, taskDiv
-} from "../js/weeklyTaskList.divSnippets.js";
+} from "./weeklyTaskList.divSnippets.js";
 
 export function editorButtonsListener(){
     const _editButtons = document.querySelectorAll(".editor");
