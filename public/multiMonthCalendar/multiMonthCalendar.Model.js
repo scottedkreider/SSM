@@ -1,6 +1,7 @@
 "use strict";
 
-export default class MultiMonthCalendarManager {
+// export default class MultiMonthCalendarManager {
+class MultiMonthCalendarManager {
     constructor(startDate,endDate,title){
         this._mmc = new MultiMonthCalendar(startDate,endDate,title);
     }

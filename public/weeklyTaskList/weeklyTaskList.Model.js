@@ -1,6 +1,7 @@
 "use strict";
 
-export default class TaskList {
+// export default class TaskList {
+class TaskList {
     constructor(){
         this.TaskCategoryList = [new TaskCategory("Misc","Tasks with no other grouping")];
         this.StartDate = new Date(new Date().setUTCDate(new Date().getUTCDate() - new Date().getUTCDay())).getUTCDate();
