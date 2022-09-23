@@ -24,8 +24,6 @@ app.use("/public",express.static('public'));
 app.set('view engine', 'ejs');
 
 const db = require("./app/models")
-const Role = db.role;
-
 
 db.mongoose
     .connect("mongodb+srv://scottedkreider:MongoAdmin1234@cluster0.xfkqs.mongodb.net/?retryWrites=true&w=majority")
