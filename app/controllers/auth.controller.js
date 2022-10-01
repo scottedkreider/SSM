@@ -18,6 +18,8 @@ exports.signup = (req, res) => {
       return;
     }
   });
+
+  res.status(200).send({ message: "Signup a success!" });
 };
 
 exports.signin = (req, res) => {
