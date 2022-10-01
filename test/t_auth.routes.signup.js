@@ -1,3 +1,17 @@
+// Tests:
+// 	- (success) Submit a unique username and password
+// 		○ (pre) Username or email does not exist
+// 		○ Check that the response = 200
+// 	- (failure: duplicate username) Submit an already existing username
+// 		○ (pre) Account with the username already exists
+// 		○ Submit a duplicate username
+// 		○ Check that the response = 401
+// 	- (failure: duplicate email) Submit an already existing email
+// 		○ (pre) Account with the email already exists
+// 		○ Submit a duplicate email
+// 		○ Check that the response = 402
+
+
 // import fetch from "node-fetch";
 const fetch = require("node-fetch");
 
