@@ -1,6 +1,9 @@
 const db = require("../app/models");
 const User = db.user;
 
+// bcrypt for comparing passwords
+var bcrypt = require("bcryptjs");
+
 exports.deleteUser = (username, res) => {
     initializeDbConnection();
 
@@ -8,12 +11,12 @@ exports.deleteUser = (username, res) => {
         username: username
       }).exec((err, user) => {
         if (err) {
+          console.error("TEST: Add User error", err);
           return;
         }
-        console.log("user successfully deleted");
+        console.log(`user ${username} successfully deleted`);
+        closeDbConnection();
       });
-
-      closeDbConnection();
 }
 
 exports.addUser = (accountInfo, res) => {
@@ -27,12 +30,12 @@ exports.addUser = (accountInfo, res) => {
     
       user.save((err, user) => {
         if (err) {
-          res.status(500).send({ message: err });
+            console.error("TEST: Add User error", err);
           return;
         }
+        console.log(`user ${accountInfo.username} successfully added`);
+        closeDbConnection();
       });
-
-      closeDbConnection();
 }
 
 initializeDbConnection = () => {
@@ -48,5 +51,5 @@ initializeDbConnection = () => {
 }
 
 closeDbConnection = () => {
-    db.mongoose.connection.close()
+    db.mongoose.connection.close();
 }

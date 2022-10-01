@@ -16,7 +16,6 @@
 // import fetch from "node-fetch";
 const fetch = require("node-fetch");
 
-// mongoDb dev tools (add, delete, etc...)
 const tools = require("../tools/mongodb.Controller");
 
 
@@ -35,20 +34,14 @@ QUnit.module('(AUTH API) Sign-in', {
 QUnit.test('(1) Signin successfully with a username and a password', assert => {
     const done = assert.async();
 
-    tools.addUser({
-        username: "__aTestUser",
-        email: "__aTestUser@testUser.com",
-        password: "abcd1234"
-    });
-
     fetch('http://localhost:5000/api/auth/signin', {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "username": "__aTestUser",
-            "password": "abcd1234"
+            "username": "myInitialUserThatNoOneElseWillPick",
+            "password": "fsdfsfd"
         })
     })
     .then((response) => {
