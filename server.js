@@ -61,6 +61,7 @@ app.get('/',(req, res) => {
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 require('./app/routes/multiMonthCalendar.routes')(app);
+require('./app/routes/weeklyTaskList.routes')(app);
 
 app.listen(process.env.PORT || 5000, () => {
   console.log("Server is live on port 5000");

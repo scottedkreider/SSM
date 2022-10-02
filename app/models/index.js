@@ -7,5 +7,6 @@ db.mongoose = mongoose;
 
 db.user = require("./user.model");
 db.multiMonthCalendar = require("./multiMonthCalendar.model");
+db.weeklyTaskList = require("./weeklyTaskList.model");
 
 module.exports = db;
