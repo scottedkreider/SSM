@@ -11,7 +11,7 @@ const currentWeeklyTaskList = localStorage.getItem("weeklyTaskList_model")
 
 !currentWeeklyTaskList
     ? displayStartNewWeeklyTaskListButton()
-    : displayWeeklyTaskList();
+    : displayWeeklyTaskList(currentWeeklyTaskList);
 
 
 function displayStartNewWeeklyTaskListButton() {
@@ -27,7 +27,7 @@ function displayStartNewWeeklyTaskListButton() {
     weeklyTaskList_div.append(startNewWeeklyTaskList_button)
 
     startNewWeeklyTaskList_button.addEventListener('click',
-        startNewWeeklyTaskList());
+        () => startNewWeeklyTaskList());
 }
 
 
@@ -52,22 +52,22 @@ function startNewWeeklyTaskList() {
     weeklyTaskList_div.append(newWeeklyTaskList_div);
 
     // Listen for navigating away from the page and send weeklyTaskList_model to the database
-        console.log("left the page")
-        fetch('http://localhost:5000/api/weeklyTaskList', {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: `${localStorage.getItem("weeklyTaskList_model")}`
-        })
-            .then((response) => {
-                console.log(response.status);
-            }
-            );
+    fetch('http://localhost:5000/api/weeklyTaskList', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: `${localStorage.getItem("weeklyTaskList_model")}`
+    })
+        .then((response) => {
+            console.log(response.status);
+        }
+        );
 
 
 }
 
-function displayWeeklyTaskList() {
-    console.log("lmao")
+function displayWeeklyTaskList(currentWeeklyTaskList) {
+    console.log("lmao");
+    console.log(currentWeeklyTaskList);
 }
