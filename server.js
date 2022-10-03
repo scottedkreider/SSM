@@ -37,6 +37,12 @@ db.mongoose
 
 
 
+// Create Account route
+app.get('/createAccount',(req, res) => {
+    console.log('createAccount');
+    res.render(path.join("pages/createAccount"));
+})
+
 // Weekly Task List route
 app.get('/weeklyTaskList',(req, res) => {
     console.log('weeklyTaskList');
