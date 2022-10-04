@@ -10,8 +10,9 @@ displayCreateAccountDiv(createAccount_div);
 
 // Add listener to submit button
 const createAccountFormSubmit_button = document.getElementById("createAccountFormSubmit_button");
-createAccountFormSubmit_button.addEventListener("click",async () => {
-    const accountInfo = gatherAccountInfo()
+createAccountFormSubmit_button.addEventListener("click",async (event) => {
+    event.preventDefault();
+    const accountInfo = gatherAccountInfo();
     const responseStatus = await sendAccountInfoToServer(accountInfo);
     await handleSendAccountInfoToServerResponse(responseStatus.status);
 });
@@ -48,21 +49,22 @@ async function sendAccountInfoToServer(accountInfo){
 // Listen for response
 async function handleSendAccountInfoToServerResponse(status){
     if(status === 401){
-        console.log("401 error");
+        // console.log("401 error");
         displayDuplicateUsernameError(createAccount_div);
         setTimeout(() => {
             location.reload();
         }, 3000)
     }
     else if(status === 402){
-        console.log("402 error");
+        // console.log("402 error");
         displayDuplicateEmailError(createAccount_div);
         setTimeout(() => {
             location.reload();
         }, 3000)
     }
     else if(status === 200){
-        console.log("success");
-        fetch('/');
+        // console.log("successful login");
+        const createAccountForm_form = document.getElementById("createAccountForm_form");
+        createAccountForm_form.submit();
     }
 }
