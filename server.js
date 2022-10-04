@@ -56,11 +56,17 @@ app.get('/multiMonthCalendar',(req, res) => {
     res.render(path.join("pages/multiMonthCalendar"));
 })
 
-
 // Root route
 app.get('/',(req, res) => {
-    console.log('index');
-    res.render(path.join("pages/index"));
+    console.log('dashboard');
+    res.render(path.join("pages/login"));
+})
+
+
+// // Dashboard route
+app.get('/dashboard',(req, res) => {
+    console.log('dashboard');
+    res.render(path.join("pages/dashboard"));
 })
 
 // routes
