@@ -51,14 +51,14 @@ async function sendLoginInfoToServer(loginInfo){
 async function handleSendLoginInfoToServerResponse(response){
     if(response.status === 401){
         console.log("401 error");
-        displayUserNotFoundError(login_div);
+        displayInvalidPasswordError(login_div);
         setTimeout(() => {
             location.reload();
         }, 3000)
     }
     else if(response.status === 404){
         console.log("404 error");
-        displayInvalidPasswordError(login_div);
+        displayUserNotFoundError(login_div);
         setTimeout(() => {
             location.reload();
         }, 3000)
