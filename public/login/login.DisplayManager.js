@@ -2,7 +2,7 @@ import
     {   displayLoginAccountInformationDiv,
         displayUserNotFoundError,
         displayInvalidPasswordError    }
-    from "./login.Interface.js";
+    from "./login.InterfaceElements.js";
 
 // Grab the div to hold the login page
 const login_div = document.getElementById("loginDiv");
@@ -50,14 +50,14 @@ async function sendLoginInfoToServer(loginInfo){
 // Listen for response
 async function handleSendLoginInfoToServerResponse(response){
     if(response.status === 401){
-        console.log("401 error");
+        // console.log("401 error");
         displayInvalidPasswordError(login_div);
         setTimeout(() => {
             location.reload();
         }, 3000)
     }
     else if(response.status === 404){
-        console.log("404 error");
+        // console.log("404 error");
         displayUserNotFoundError(login_div);
         setTimeout(() => {
             location.reload();

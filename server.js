@@ -35,41 +35,8 @@ db.mongoose
         process.exit();
     });
 
-
-
-// Create Account route
-app.get('/createAccount',(req, res) => {
-    console.log('createAccount');
-    res.render(path.join("pages/createAccount"));
-})
-
-// Weekly Task List route
-app.get('/weeklyTaskList',(req, res) => {
-    console.log('weeklyTaskList');
-    res.render(path.join("pages/weeklyTaskList"));
-})
-
-// MultiMonthCalendar route
-app.get('/multiMonthCalendar',(req, res) => {
-    console.log('multiMonthCalendar');
-    // res.json({message: "Welcome!"});
-    res.render(path.join("pages/multiMonthCalendar"));
-})
-
-// Root route
-app.get('/',(req, res) => {
-    console.log('dashboard');
-    res.render(path.join("pages/login"));
-})
-
-
-// // Dashboard route
-app.get('/dashboard',(req, res) => {
-    console.log('dashboard');
-    res.render(path.join("pages/dashboard"));
-})
-
 // routes
+require('./app/routes/page.routes')(app);
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 require('./app/routes/multiMonthCalendar.routes')(app);

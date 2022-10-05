@@ -2,10 +2,11 @@ import
     {   displayCreateAccountDiv,
         displayDuplicateUsernameError,
         displayDuplicateEmailError    }
-    from "./createAccount.Interface.js";
+    from "./createAccount.InterfaceElements.js";
 
 // Get the Create Account placeholder div
 const createAccount_div = document.getElementById("createAccountDiv");
+
 displayCreateAccountDiv(createAccount_div);
 
 // Add listener to submit button
@@ -44,7 +45,6 @@ async function sendAccountInfoToServer(accountInfo){
         )
     return res;
 }
-
 
 // Listen for response
 async function handleSendAccountInfoToServerResponse(status){
