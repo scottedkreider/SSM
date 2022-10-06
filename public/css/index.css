@@ -4,11 +4,15 @@ h1 {
 
 .appHeader {
     background-color: rgba(176, 196, 222, 0.39);
+    padding-top: 2vh;
+    padding-bottom: 2vh;
 }
 
 .appDiv {
+    padding-top: 100px;
     background-color: rgba(176, 196, 222, 0.137);
     position: relative;
+    height: 70vh;
 }
 
 .entryField {
@@ -16,6 +20,7 @@ h1 {
     border-radius: 10px;
     border-color: burlywood;
     text-align: center;
+    width: 20vw;
 }
 
 .entryButton {
@@ -23,6 +28,7 @@ h1 {
     border-radius: 10px;
     border-color: lightskyblue;
     text-align: center;
+    width: 20vw;
 }
 
 .headerEntryButton {
@@ -30,6 +36,7 @@ h1 {
     border-radius: 10px;
     border-color: lightskyblue;
     text-align: center;
+    width: 20vw;
 }
 
 .imgBox {
@@ -41,4 +48,10 @@ h1 {
     max-width: 100%;
     max-height: 100vh;
     margin: auto;
+}
+
+.testBackground {
+    background: lightskyblue;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }

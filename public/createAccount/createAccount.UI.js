@@ -1,6 +1,7 @@
 export function displayCreateAccountDiv(parentDiv) {
     // Create the display for the form to enter username, email, and password
     const createAccountForm_div = document.createElement("div");
+    createAccountForm_div.setAttribute("class","row justify-content-center");
 
         // Account information form
         const createAccountForm_form = document.createElement("form");
@@ -41,6 +42,7 @@ export function displayCreateAccountDiv(parentDiv) {
 
             // Submit button
             const createAccountFormSubmit_div = document.createElement("div");
+            createAccountFormSubmit_div.setAttribute("class", "row justify-content-center")
             const createAccountFormSubmit_button = document.createElement("button");
             createAccountFormSubmit_button.setAttribute("type","submit")
             createAccountFormSubmit_button.setAttribute("id","createAccountFormSubmit_button")

@@ -1,13 +1,13 @@
-<div class = "appHeader">
+<div class = "appHeader flex-container">
     <%- include('../partials/_logo'); %>
-    <div id = "createAccountButton_div">
-        <form action="createAccount" class = "row">
-            <button type = "submit" class = "headerEntryButton col-md-4 offset-md-4">Create Account</button>
+    <div id = "createAccountButton_div" class = "row justify-content-center">
+        <form action="createAccount">
+            <button type = "submit" class = "entryButton">Create Account</button>
         </form>
     </div>
     <div id = "loginButton_div">
-        <form action="/"  class="row">
-            <button type = "submit" class = "headerEntryButton col-md-4 offset-md-4">Login</button>
+        <form action="/" class="row justify-content-center">
+            <button type = "submit" class = "entryButton">Login</button>
         </form>
     </div>
 </div>
