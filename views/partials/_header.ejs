@@ -1,10 +1,13 @@
 <div class = "appHeader">
     <%- include('../partials/_logo'); %>
-    <form action="createAccount">
-        <button type = "submit" class = "headerEntryButton">Create Account</button>
-    </form>
-
-    <form action="/">
-        <button type = "submit" class = "headerEntryButton">Login</button>
-    </form>
+    <div id = "createAccountButton_div">
+        <form action="createAccount" class = "row">
+            <button type = "submit" class = "headerEntryButton col-md-4 offset-md-4">Create Account</button>
+        </form>
+    </div>
+    <div id = "loginButton_div">
+        <form action="/"  class="row">
+            <button type = "submit" class = "headerEntryButton col-md-4 offset-md-4">Login</button>
+        </form>
+    </div>
 </div>

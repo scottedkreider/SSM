@@ -3,34 +3,6 @@
 // import MultiMonthCalendarManager from "./multiMonthCalendar.Model.js";
 // import displayMultiMonthCalendar from "./multiMonthCalendar.DisplayManager.js";
 
-export default function submitDatesListener(){
-    const _submitButton = document.getElementById("mmcDateSubmitButton");
-    // console.log(_submitButton);
-
-    let _mmc_mgr;
-
-    _submitButton.addEventListener("click",() => {
-        // console.log("weSubmitting");
-        const _startDate = document.getElementById("mmcStartDate");
-        const _endDate = document.getElementById("mmcEndDate");
-        const _mmcTitle = document.getElementById("mmcTitle");
-
-        _mmc_mgr = {
-            startdate: _startDate.value,
-            enddate: _endDate.value,
-            _mmcTitle: _mmcTitle.value
-        }
-
-        localStorage.setItem("_multiMonthCalendar",JSON.stringify(_mmc_mgr));
-        // localStorage.setItem("_multiMonthCalendar",JSON.stringify(_mmc_mgr._mmc));
-        localStorage.setItem("_mgr",JSON.stringify(_mmc_mgr));
-        localStorage.setItem("_lastSent",JSON.stringify(true));
-
-        // sendMultiMonthCalendarToDb(_mmc_mgr);
-
-        // displayMultiMonthCalendar();
-    })    
-}
 
 function sendMultiMonthCalendarToDb(mmc){
     var xmlhttp = new XMLHttpRequest();

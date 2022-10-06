@@ -1,18 +1,26 @@
 <div class = "appHeader">
     <%- include('../partials/_logo'); %>
-    <form action="/dashboard">
-        <button type = "submit">Dashboard</button>
-    </form>
-    
-    <form action="weeklyTaskList">
-        <button type = "submit">Weekly Task List</button>
-    </form>
+    <div id = "dashboardButton_div">
+        <form action="/dashboard" class = "row">
+            <button type = "submit" class = "headerEntryButton col-md-4 offset-md-4">Dashboard</button>
+        </form>
+    </div>
 
-    <form action="multiMonthCalendar">
-        <button type = "submit">MultiMonth Calendar</button>
-    </form>
+    <div id = "multiMonthCalendarButton_div">
+        <form action="multiMonthCalendar" class = "row">
+            <button type = "submit" class = "headerEntryButton col-md-4 offset-md-4">MultiMonth Calendar</button>
+        </form>
+    </div>
 
-    <form action="logout">
-        <button type = "submit">Logout</button>
-    </form>
+    <div id = "weeklyTaskListButton_div">
+        <form action="weeklyTaskList" class = "row">
+            <button type = "submit" class = "headerEntryButton col-md-4 offset-md-4">Weekly Task List</button>
+        </form>
+    </div>
+
+    <div id = "logoutButton_div">
+        <form action="/" class = "row">
+            <button type = "submit" class = "headerEntryButton col-md-4 offset-md-4">Logout</button>
+        </form>
+    </div>
 </div>
