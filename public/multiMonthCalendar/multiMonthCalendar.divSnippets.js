@@ -11,55 +11,6 @@ const DayOfTheWeek = {
 }
 
 // MMC
-export function mmcDateEntryForm(){
-    var today = new Date();
-
-    var _mmcDateEntryDiv = document.createElement('div');
-    _mmcDateEntryDiv.setAttribute("class","mmcDateEntryDiv");
-
-    var _mmcDateEntryForm = document.createElement('form');
-    _mmcDateEntryForm.setAttribute("class","mmcDateEntryForm");
-
-    var startDateDiv = document.createElement("div");
-    startDateDiv.innerHTML = "Enter MultiMonth Period Start Date";
-    var startDateInput = document.createElement("input");
-    startDateInput.setAttribute("type","date");
-    startDateInput.setAttribute("id","mmcStartDate");
-    // Update to have dynamic date around the current date
-    startDateInput.setAttribute("value","2022-05-01");
-    startDateDiv.appendChild(startDateInput);
-
-    var endDateDiv = document.createElement("div");
-    endDateDiv.innerHTML = "Enter MultiMonth Period End Date";
-    var endDateInput = document.createElement("input");
-    endDateInput.setAttribute("type","date");
-    endDateInput.setAttribute("id","mmcEndDate");
-    // Update to have dynamic date around the current date
-    endDateInput.setAttribute("value","2022-08-19");
-    endDateDiv.appendChild(endDateInput);
-
-    var mmcTitleDiv = document.createElement("div");
-    mmcTitleDiv.innerHTML = "Enter MultiMonth Period Title";
-    var mmcTitleInput = document.createElement("input");
-    mmcTitleInput.setAttribute("id","mmcTitle");
-    mmcTitleInput.setAttribute("placeholder","Title");
-    mmcTitleDiv.appendChild(mmcTitleInput);
-
-    var submitDatesButton = document.createElement("button");
-    submitDatesButton.setAttribute("type","button");
-    submitDatesButton.setAttribute("id","mmcDateSubmitButton");
-    submitDatesButton.innerHTML = "Submit";
-
-    _mmcDateEntryForm.appendChild(startDateDiv);
-    _mmcDateEntryForm.appendChild(endDateDiv);
-    _mmcDateEntryForm.appendChild(mmcTitleDiv);
-    _mmcDateEntryForm.appendChild(submitDatesButton);
-
-    return _mmcDateEntryForm;
-}
-
-
-// MMC
 export function mmcCalendarDiv(calendarDiv, _mmcToDisplay){
     var _mmc = _mmcToDisplay;
 

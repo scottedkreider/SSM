@@ -62,8 +62,8 @@
         return this._mmc;
     }
 
-    export default function buildMultiMonthCalendarDateEntryDisplay(){
-        multiMonthCalendarDiv.appendChild(mmcDateEntryForm());
-        submitDatesListener();
-    }
+    // export default function buildMultiMonthCalendarDateEntryDisplay(){
+    //     multiMonthCalendarDiv.appendChild(mmcDateEntryForm());
+    //     submitDatesListener();
+    // }
 // }
