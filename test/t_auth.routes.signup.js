@@ -34,9 +34,9 @@ QUnit.test('(1) Fail to create an account due to duplicate username', assert => 
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "username": "myInitialUserThatNoOneElseWillPick",
-            "email": "usera@scotttest.com",
-            "password": "TheSecondBestPassword"
+            "username": "scott",
+            "email": "scott@scott12345.com",
+            "password": "scott"
         })
     })
     .then((response) => {
@@ -56,9 +56,9 @@ QUnit.test('(2) Fail to create an account due to duplicate email', assert => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "username": "user2",
-            "email": "myInitialUserThatNoOneElseWillPick@scotttest.com",
-            "password": "TheSecondBestPassword"
+            "username": "scott12345",
+            "email": "scott@scott.com",
+            "password": "scott"
         })
     })
     .then((response) => {

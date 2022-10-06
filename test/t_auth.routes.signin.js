@@ -40,8 +40,8 @@ QUnit.test('(1) Signin successfully with a username and a password', assert => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "username": "myInitialUserThatNoOneElseWillPick",
-            "password": "fsdfsfd"
+            "username": "scott",
+            "password": "scott"
         })
     })
     .then((response) => {
