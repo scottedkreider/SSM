@@ -1,9 +1,9 @@
 "use strict";
 
-import MultiMonthCalendarManager from "./multiMonthCalendar.Model.js";
-import displayMultiMonthCalendar from "./multiMonthCalendar.DisplayManager.js";
+// import MultiMonthCalendarManager from "./multiMonthCalendar.Model.js";
+// import displayMultiMonthCalendar from "./multiMonthCalendar.DisplayManager.js";
 
-export function submitDatesListener(){
+export default function submitDatesListener(){
     const _submitButton = document.getElementById("mmcDateSubmitButton");
     // console.log(_submitButton);
 
@@ -15,15 +15,20 @@ export function submitDatesListener(){
         const _endDate = document.getElementById("mmcEndDate");
         const _mmcTitle = document.getElementById("mmcTitle");
 
-        _mmc_mgr = new MultiMonthCalendarManager(_startDate.value, _endDate.value, _mmcTitle.value);
+        _mmc_mgr = {
+            startdate: _startDate.value,
+            enddate: _endDate.value,
+            _mmcTitle: _mmcTitle.value
+        }
 
-        localStorage.setItem("_multiMonthCalendar",JSON.stringify(_mmc_mgr._mmc));
+        localStorage.setItem("_multiMonthCalendar",JSON.stringify(_mmc_mgr));
+        // localStorage.setItem("_multiMonthCalendar",JSON.stringify(_mmc_mgr._mmc));
         localStorage.setItem("_mgr",JSON.stringify(_mmc_mgr));
         localStorage.setItem("_lastSent",JSON.stringify(true));
 
-        sendMultiMonthCalendarToDb(_mmc_mgr);
+        // sendMultiMonthCalendarToDb(_mmc_mgr);
 
-        displayMultiMonthCalendar();
+        // displayMultiMonthCalendar();
     })    
 }
 
@@ -71,7 +76,6 @@ export function deleteMMCListener(){
             displayMultiMonthCalendar();
         }
     })
-
 }
 
 export function checkAllDaysListener(_mmc){
