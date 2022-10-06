@@ -3,7 +3,42 @@ h1 {
 }
 
 .appHeader {
-    background-color: lightblue;
-    border-style: solid;
+    background-color: rgba(176, 196, 222, 0.39);
 }
 
+.appDiv {
+    background-color: rgba(176, 196, 222, 0.137);
+    position: relative;
+}
+
+.entryField {
+    background-color: lightyellow;
+    border-radius: 10px;
+    border-color: burlywood;
+    text-align: center;
+}
+
+.entryButton {
+    background-color: whitesmoke;
+    border-radius: 10px;
+    border-color: lightskyblue;
+    text-align: center;
+}
+
+.headerEntryButton {
+    background-color: whitesmoke;
+    border-radius: 10px;
+    border-color: lightskyblue;
+    text-align: center;
+}
+
+.imgBox {
+    display: grid;
+    height: 100%;
+}
+
+.center-fit {
+    max-width: 100%;
+    max-height: 100vh;
+    margin: auto;
+}

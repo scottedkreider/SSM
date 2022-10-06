@@ -5,14 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../../public/multiMonthCalendar/multiMonthCalendar.css"/>
+    <%- include('../partials/_bootstrapCssCDNLink'); %>
     <title>Multi-Month Calendar</title>
 </head>
 <body>
     <%- include('../partials/_headerLoggedIn'); %>
 
-    <div id="multiMonthCalendarDiv"></div>
+    <div id = "appDiv" class = "appDiv">
+        <div id="multiMonthCalendarDiv"></div>
+    </div>
 
+    <%- include('../partials/_bootstrapJsCDNLink'); %>
     <script src="../../public/multiMonthCalendar/multiMonthCalendar.DisplayManager.js" type = "module"></script>
-    
 </body>
 </html>

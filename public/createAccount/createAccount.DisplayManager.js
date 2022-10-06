@@ -2,7 +2,7 @@ import
     {   displayCreateAccountDiv,
         displayDuplicateUsernameError,
         displayDuplicateEmailError    }
-    from "./createAccount.InterfaceElements.js";
+    from "./createAccount.UI.js";
 
 // Get the Create Account placeholder div
 const createAccount_div = document.getElementById("createAccountDiv");

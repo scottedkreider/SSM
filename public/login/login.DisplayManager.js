@@ -2,7 +2,7 @@ import
     {   displayLoginAccountInformationDiv,
         displayUserNotFoundError,
         displayInvalidPasswordError    }
-    from "./login.InterfaceElements.js";
+    from "./login.UI.js";
 
 // Grab the div to hold the login page
 const login_div = document.getElementById("loginDiv");

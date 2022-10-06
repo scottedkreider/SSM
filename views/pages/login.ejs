@@ -5,14 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../../public/createAccount/createAccount.css"/>
+    <%- include('../partials/_bootstrapCssCDNLink'); %>
     <title>SSM - Dashboard</title>
 </head>
 <body>
 
     <%- include('../partials/_header'); %>
 
-    <div id="loginDiv"></div>    
+    <div id = "appDiv" class = "appDiv">
+        <div id="loginDiv"></div>
+    </div>
 
+    <%- include('../partials/_bootstrapJsCDNLink'); %>
     <script src="../../public/login/login.DisplayManager.js" type = "module"></script>
 </body>
 </html>
