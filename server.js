@@ -11,10 +11,10 @@ const path = require("path");
 dotenv.config();
 const app = express();
 
-var corsOptions = {
-    origin: "http://localhost:5001"
-}
-app.use(cors(corsOptions));
+// var corsOptions = {
+//     origin: "http://localhost:5001"
+// }
+// app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -23,17 +23,8 @@ app.use("/public",express.static('public'));
 
 app.set('view engine', 'ejs');
 
-const db = require("./app/models")
 
-db.mongoose
-    .connect("mongodb+srv://scottedkreider:MongoAdmin1234@cluster0.xfkqs.mongodb.net/?retryWrites=true&w=majority")
-    .then(() => {
-        console.log("Successfully connected to MongoDB");
-    })
-    .catch(err => {
-        console.error("Connection error", err);
-        process.exit();
-    });
+const config = require("./app/config/db.config");
 
 // routes
 require('./app/routes/page.routes')(app);
