@@ -2,6 +2,10 @@ h1 {
     color: rgb(245, 206, 33);
 }
 
+.appHeaderContainer {
+    position: fixed;
+}
+
 .appHeader {
     background-color: rgba(176, 196, 222, 0.39);
     padding-top: 2vh;
