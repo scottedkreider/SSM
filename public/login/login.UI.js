@@ -1,7 +1,7 @@
 export function displayLoginAccountInformationDiv(parentDiv) {
         // Build a div to hold the login form
         const loginAccountInformationForm_div = document.createElement("div");
-        loginAccountInformationForm_div.setAttribute("class","row justify-content-center testBackground");
+        loginAccountInformationForm_div.setAttribute("class","row justify-content-center");
 
             // Build a form to enter username and password
             const loginAccountInformationForm_form = document.createElement("form");

@@ -49,9 +49,3 @@ h1 {
     max-height: 100vh;
     margin: auto;
 }
-
-.testBackground {
-    background: lightskyblue;
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
