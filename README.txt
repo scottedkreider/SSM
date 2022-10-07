@@ -1,3 +1,6 @@
+https://student-schedule-manager.herokuapp.com/
+
+
 1. Clone this github repo with github desktop
 2. (optional) Open code with VSCode from github desktop
 3. Install Node.js / NPM on your machine
