@@ -2,6 +2,10 @@ h1 {
     color: rgb(245, 206, 33);
 }
 
+.appHeaderContainer {
+    position: fixed;
+}
+
 .appHeader {
     background-color: rgba(176, 196, 222, 0.39);
     padding-top: 2vh;
@@ -48,10 +52,4 @@ h1 {
     max-width: 100%;
     max-height: 100vh;
     margin: auto;
-}
-
-.testBackground {
-    background: lightskyblue;
-    padding-top: 50px;
-    padding-bottom: 50px;
 }

@@ -1,17 +1,40 @@
 "use strict";
 
-// import MultiMonthCalendarManager from "./multiMonthCalendar.Model.js";
-// import displayMultiMonthCalendar from "./multiMonthCalendar.DisplayManager.js";
+import MultiMonthCalendarManager from "./multiMonthCalendar.Model.js";
+import displayMultiMonthCalendar from "./multiMonthCalendar.DisplayManager.js";
 
+export function submitDatesListener(){
+    const _submitButton = document.getElementById("mmcDateSubmitButton");
+    // console.log(_submitButton);
 
-function sendMultiMonthCalendarToDb(mmc){
-    var xmlhttp = new XMLHttpRequest();
+    let _mmc_mgr;
 
-    // const params = {num: "5"}
-    xmlhttp.open("POST","/test",true);
-    xmlhttp.setRequestHeader("Content-Type", "application/json");
-    xmlhttp.send(JSON.stringify(mmc));
+    _submitButton.addEventListener("click",() => {
+        // console.log("weSubmitting");
+        const _startDate = document.getElementById("mmcStartDate");
+        const _endDate = document.getElementById("mmcEndDate");
+        const _mmcTitle = document.getElementById("mmcTitle");
+
+        _mmc_mgr = new MultiMonthCalendarManager(_startDate.value, _endDate.value, _mmcTitle.value);
+
+        localStorage.setItem("_multiMonthCalendar",JSON.stringify(_mmc_mgr._mmc));
+        localStorage.setItem("_mgr",JSON.stringify(_mmc_mgr));
+        localStorage.setItem("_lastSent",JSON.stringify(true));
+
+        // sendMultiMonthCalendarToDb(_mmc_mgr);
+
+        displayMultiMonthCalendar();
+    })    
 }
+
+// function sendMultiMonthCalendarToDb(mmc){
+//     var xmlhttp = new XMLHttpRequest();
+
+//     // const params = {num: "5"}
+//     xmlhttp.open("POST","/test",true);
+//     xmlhttp.setRequestHeader("Content-Type", "application/json");
+//     xmlhttp.send(JSON.stringify(mmc));
+// }
 
 export function checkOffDaysListener(_mmc){
     var yesterday = new Date(new Date().getTime() - (24 * 60 * 60 * 1000));
@@ -48,6 +71,7 @@ export function deleteMMCListener(){
             displayMultiMonthCalendar();
         }
     })
+
 }
 
 export function checkAllDaysListener(_mmc){
