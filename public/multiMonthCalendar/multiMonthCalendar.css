@@ -18,8 +18,9 @@ input:disabled {
 }
 
 .multiMonthCalendarDisplay {
-    background-color: lightseagreen;
-    border-style: solid;
+    background-color: whitesmoke;
+    padding-left: 2vw;
+    padding-right: 2vw;
 }
 
 .wrapper {
@@ -33,7 +34,7 @@ input:disabled {
 }
 
 .wrapper > * {
-    background-color: lawngreen;
+    background-color: burlywood;
 }
 
 .container {

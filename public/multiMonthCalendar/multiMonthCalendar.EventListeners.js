@@ -4,16 +4,16 @@ import MultiMonthCalendarManager from "./multiMonthCalendar.Model.js";
 import displayMultiMonthCalendar from "./multiMonthCalendar.DisplayManager.js";
 
 export function submitDatesListener(){
-    const _submitButton = document.getElementById("mmcDateSubmitButton");
-    // console.log(_submitButton);
+    const _submitButton = document.getElementById("mmcDateEntrySubmit_button");
+    console.log(_submitButton);
 
     let _mmc_mgr;
 
     _submitButton.addEventListener("click",() => {
         // console.log("weSubmitting");
-        const _startDate = document.getElementById("mmcStartDate");
-        const _endDate = document.getElementById("mmcEndDate");
-        const _mmcTitle = document.getElementById("mmcTitle");
+        const _startDate = document.getElementById("mmcDateEntryStartDate");
+        const _endDate = document.getElementById("mmcDateEntryEndDate");
+        const _mmcTitle = document.getElementById("mmcDateEntryTitle");
 
         _mmc_mgr = new MultiMonthCalendarManager(_startDate.value, _endDate.value, _mmcTitle.value);
 

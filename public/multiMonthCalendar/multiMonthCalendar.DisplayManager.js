@@ -1,11 +1,15 @@
 "use strict";
 
 import MultiMonthCalendarDisplay from "./multiMonthCalendar.Interface.js";
-// import MultiMonthCalendarManager from "./multiMonthCalendar.Model";
 
 export default function displayMultiMonthCalendar(){
     const multiMonthCalendarDiv = document.getElementById("multiMonthCalendarDiv");
-    multiMonthCalendarDiv.innerHTML = "<h1>MultiMonth Calendar</h1>";
+    multiMonthCalendarDiv.replaceChildren();
+    const multiMonthCalendarDiv_text = document.createElement("h1");
+    multiMonthCalendarDiv_text.innerText = "MultiMonth Calendar";
+    multiMonthCalendarDiv_text.setAttribute("class","row justify-content-center")
+    multiMonthCalendarDiv.setAttribute("class","flex-container justify-content-center")
+    multiMonthCalendarDiv.appendChild(multiMonthCalendarDiv_text);
 
     var multiMonthCalendarDisplay = new MultiMonthCalendarDisplay();
 
