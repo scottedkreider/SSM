@@ -24,25 +24,26 @@ module.exports = function(app) {
 
     // Dashboard route
     // Verify access
-    app.get('/dashboard',(req, res) => {
-        console.log('dashboard');
-        res.render(path.join("pages/dashboard"));
+    app.get('/dashboard',
+        (req, res) => {
+            console.log('dashboard');
+            res.render(path.join("pages/dashboard"));
     })
 
     // Weekly Task List route
     // Verify access
-    app.get('/weeklyTaskList',(req, res) => {
-        console.log('weeklyTaskList');
-        res.render(path.join("pages/weeklyTaskList"));
+    app.get('/weeklyTaskList',
+        (req, res) => {
+            console.log('weeklyTaskList');
+            res.render(path.join("pages/weeklyTaskList"));
     })
 
     // MultiMonthCalendar route
     // Verify access
     app.get('/multiMonthCalendar',
-        // [authJwt.verifyToken],
         (req, res) => {
-        console.log('multiMonthCalendar');
-        res.render(path.join("pages/multiMonthCalendar"));
+            console.log('multiMonthCalendar');
+            res.render(path.join("pages/multiMonthCalendar"));
     })
   };
 
