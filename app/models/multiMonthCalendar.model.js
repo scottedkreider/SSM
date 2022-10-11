@@ -3,7 +3,9 @@ const mongoose = require("mongoose");
 const MultiMonthCalendar = mongoose.model(
   "MultiMonthCalendar",
   new mongoose.Schema({
-    Title: String
+    username: String,
+    Title: String,
+    _mgr: String
   })
 );
 

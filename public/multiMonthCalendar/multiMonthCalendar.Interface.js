@@ -2,12 +2,12 @@
 
 import {
     mmcDateEntryForm, mmcCalendarDiv, deleteMMCDiv, checkAllDaysDiv,
-    editDailyInfoDiv
+    editDailyInfoDiv, saveCalendarToDBDiv
 } from "./multiMonthCalendar.divSnippets.js";
 import {
     submitDatesListener, checkOffDaysListener,
     deleteMMCListener, checkAllDaysListener,
-    editDailyInfoListener
+    editDailyInfoListener, saveMMCListener
 } from "./multiMonthCalendar.EventListeners.js";
 import MultiMonthCalendarManager from "./multiMonthCalendar.Model.js";
 
@@ -41,6 +41,9 @@ export default class MultiMonthCalendarDisplay {
 
         this.multiMonthCalendarDiv.appendChild(editDailyInfoDiv());
         editDailyInfoListener(this._mmc);
+
+        this.multiMonthCalendarDiv.appendChild(saveCalendarToDBDiv());
+        saveMMCListener(this._mmc);
     }
 
     // Populate the mmcDiv with the calendar

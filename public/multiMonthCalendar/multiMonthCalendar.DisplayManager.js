@@ -2,7 +2,8 @@
 
 import MultiMonthCalendarDisplay from "./multiMonthCalendar.Interface.js";
 
-export default function displayMultiMonthCalendar(){
+
+export default async function displayMultiMonthCalendar(){
     const multiMonthCalendarDiv = document.getElementById("multiMonthCalendarDiv");
     multiMonthCalendarDiv.replaceChildren();
     const multiMonthCalendarDiv_text = document.createElement("h1");
@@ -13,40 +14,25 @@ export default function displayMultiMonthCalendar(){
 
     var multiMonthCalendarDisplay = new MultiMonthCalendarDisplay();
 
+    window.addEventListener("load",async () => {
+        // await getMMCFromDatabase();
+    });
+
     if(!localStorage.getItem("_multiMonthCalendar")){
         multiMonthCalendarDisplay.buildMultiMonthCalendarDateEntryDisplay();
     } else {
 
         var _mgr = JSON.parse(localStorage.getItem("_multiMonthCalendar"));
-        console.log(_mgr);
 
-        multiMonthCalendarDisplay.insertMultiMonthCalendarToDisplay(JSON.parse(localStorage.getItem("_multiMonthCalendar")));
+        multiMonthCalendarDisplay.insertMultiMonthCalendarToDisplay(_mgr);
         multiMonthCalendarDisplay.buildMultiMonthCalendarDisplay();
     }
 
-    window.addEventListener("beforeunload",() => {
-        console.log("before I go");
-        sendMMCToDatabase();
-    });
+    // window.addEventListener("onunload",async () => {
+    //     console.log("at the end");
+    //     await sendMMCToDatabase();
+    // });
 }
 
 
-function sendMMCToDatabase(){
-    fetch('/api/multiMonthCalendar', {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-            'x-access-token': `${JSON.parse(localStorage.getItem("auth")).accessToken}`
-        },
-        body: {
-            username: `${JSON.parse(localStorage.getItem("auth")).username}`,
-            _mgr: JSON.stringify(_mgr)
-        }
-    })
-        .then((response) => {
-            console.log(response);
-        }
-        )
-}
-
-displayMultiMonthCalendar();
+await displayMultiMonthCalendar();

@@ -2,8 +2,10 @@ const db = require("../models");
 const MultiMonthCalendar = db.multiMonthCalendar;
 
 exports.retrieveMMCData = (req, res) => {
+    console.log("retrieving");
+    console.log(req.headers.authorization);
     MultiMonthCalendar.findOne({
-      username: req.body.name
+      username: req.headers.authorization
     })
       .exec((err, mmc) => {
         if (err) {
@@ -21,9 +23,12 @@ exports.retrieveMMCData = (req, res) => {
 }
 
 exports.saveMMCData = (req, res) => {
-    console.log(req.body.Title)
+    // console.log(req.body._mgr)
+    // console.log(req.headers.authorization)
     const mmc = new MultiMonthCalendar({
-        Title: req.body.Title
+        username: req.headers.authorization,
+        Title: JSON.parse(req.body._mgr).Title,
+        _mgr: req.body._mgr
       });
 
       mmc.save((err, mmc) => {

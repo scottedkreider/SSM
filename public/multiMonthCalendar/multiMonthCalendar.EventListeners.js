@@ -5,7 +5,6 @@ import displayMultiMonthCalendar from "./multiMonthCalendar.DisplayManager.js";
 
 export function submitDatesListener(){
     const _submitButton = document.getElementById("mmcDateEntrySubmit_button");
-    console.log(_submitButton);
 
     let _mmc_mgr;
 
@@ -27,14 +26,6 @@ export function submitDatesListener(){
     })    
 }
 
-// function sendMultiMonthCalendarToDb(mmc){
-//     var xmlhttp = new XMLHttpRequest();
-
-//     // const params = {num: "5"}
-//     xmlhttp.open("POST","/test",true);
-//     xmlhttp.setRequestHeader("Content-Type", "application/json");
-//     xmlhttp.send(JSON.stringify(mmc));
-// }
 
 export function checkOffDaysListener(_mmc){
     var yesterday = new Date(new Date().getTime() - (24 * 60 * 60 * 1000));
@@ -68,6 +59,7 @@ export function deleteMMCListener(){
         // console.log("weDeleting");
         if(confirm("are you sure?")){
             localStorage.removeItem("_multiMonthCalendar");
+            localStorage.removeItem("_mgr");
             displayMultiMonthCalendar();
         }
     })
@@ -138,4 +130,49 @@ export function saveDailyInfoListener(_mmc){
         editDailyInfoListener(_mmc);
         displayMultiMonthCalendar();
     });   
+}
+
+async function sendMMCToDatabase(){
+    await fetch('/api/multiMonthCalendar', {
+        method: "POST",
+        headers: {
+            'Authorization': `${JSON.parse(localStorage.getItem("auth")).username}`,
+            'x-access-token': `${JSON.parse(localStorage.getItem("auth")).accessToken}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            _mgr: localStorage.getItem("_multiMonthCalendar")
+        })
+    })
+        .then(async (response) => {
+            console.log(response);
+        }
+        )
+}
+
+export function saveMMCListener(_mmc){
+    const _deleteButton = document.getElementById("_saveCalendarToDBButton");
+    _deleteButton.addEventListener("click",() => {
+        // console.log("weDeleting");
+        if(confirm("are you sure?")){
+            console.log("here")
+            sendMMCToDatabase();
+        }
+    })
+
+}
+
+
+async function getMMCFromDatabase(){
+    await fetch('/api/multiMonthCalendar', {
+        method: "GET",
+        headers: {
+            'Authorization': `${JSON.parse(localStorage.getItem("auth")).username}`,
+            'x-access-token': `${JSON.parse(localStorage.getItem("auth")).accessToken}`
+        }
+    })
+        .then((response) => {
+            console.log(response);
+        }
+        )
 }

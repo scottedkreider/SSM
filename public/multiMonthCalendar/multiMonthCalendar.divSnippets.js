@@ -14,9 +14,6 @@ const DayOfTheWeek = {
 export function mmcDateEntryForm(){
     const today = new Date();
     const today_formatted = `${today.getUTCFullYear()}-${(today.getUTCMonth()+1).toString().padStart(2,"0")}-${today.getUTCDate().toString().padStart(2,"0")}`;
-    console.log(today_formatted)
-    console.log(today)
-
 
     // Div to hold the MMC date entry form
     const mmcDateEntry_div = document.createElement("div");
@@ -180,4 +177,16 @@ export function editDailyInfoDiv(){
     editDailyInfoDiv.appendChild(_editDailyInfoButton);
 
     return editDailyInfoDiv;
+}
+
+
+export function saveCalendarToDBDiv(){
+    var saveCalendarToDBDiv = document.createElement("div");
+    var _saveCalendarToDBButton = document.createElement("button");
+    _saveCalendarToDBButton.setAttribute("id","_saveCalendarToDBButton");
+    _saveCalendarToDBButton.setAttribute("class","entryButton");    
+    _saveCalendarToDBButton.innerHTML = "Save Calendar to DB";
+    saveCalendarToDBDiv.appendChild(_saveCalendarToDBButton);
+
+    return saveCalendarToDBDiv;
 }
