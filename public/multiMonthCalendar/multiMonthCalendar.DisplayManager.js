@@ -23,6 +23,21 @@ export default function displayMultiMonthCalendar(){
         multiMonthCalendarDisplay.insertMultiMonthCalendarToDisplay(JSON.parse(localStorage.getItem("_multiMonthCalendar")));
         multiMonthCalendarDisplay.buildMultiMonthCalendarDisplay();
     }
+
+    window.addEventListener("beforeunload",() => {
+        console.log("before I go");
+        fetch('/api/multiMonthCalendar', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(_mgr)
+        })
+            .then((response) => {
+                console.log(response);
+            }
+            )
+    });
 }
 
 displayMultiMonthCalendar();

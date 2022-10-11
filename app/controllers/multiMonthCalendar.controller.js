@@ -21,9 +21,9 @@ exports.retrieveMMCData = (req, res) => {
 }
 
 exports.saveMMCData = (req, res) => {
-    console.log(req.body.name)
+    console.log(req.body.Title)
     const mmc = new MultiMonthCalendar({
-        name: req.body.name
+        Title: req.body.Title
       });
 
       mmc.save((err, mmc) => {

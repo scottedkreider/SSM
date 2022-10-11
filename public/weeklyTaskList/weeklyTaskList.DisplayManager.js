@@ -68,6 +68,6 @@ function startNewWeeklyTaskList() {
 }
 
 function displayWeeklyTaskList(currentWeeklyTaskList) {
-    console.log("lmao");
+    console.log("Local Storage");
     console.log(currentWeeklyTaskList);
 }
