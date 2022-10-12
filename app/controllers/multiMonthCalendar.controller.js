@@ -18,7 +18,11 @@ exports.retrieveMMCData = (req, res) => {
             return;
           }
   
-        res.status(200).send({ message: "data successfully found" });
+        res.status(200).send(
+            {
+                message: "data successfully found",
+                mmc: mmc
+            });
       });
 }
 
@@ -30,7 +34,9 @@ exports.saveMMCData = (req, res) => {
         {
             username: req.headers.authorization,
             Title: JSON.parse(req.body._mgr).Title,
-            _mgr: req.body._mgr
+            StartDate: JSON.parse(req.body._mgr).StartDate,
+            EndDate: JSON.parse(req.body._mgr).EndDate,
+            ListOfDays: JSON.parse(req.body._mgr).ListOfDays
         },
         {
             upsert: true,

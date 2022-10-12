@@ -8,7 +8,9 @@ const MultiMonthCalendar = mongoose.model(
         unique: true
     },    
     Title: String,
-    _mgr: String
+    StartDate: String,
+    EndDate: String,
+    ListOfDays: []
   })
 );
 

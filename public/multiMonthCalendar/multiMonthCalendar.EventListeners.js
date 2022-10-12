@@ -17,10 +17,6 @@ export function submitDatesListener(){
         _mmc_mgr = new MultiMonthCalendarManager(_startDate.value, _endDate.value, _mmcTitle.value);
 
         localStorage.setItem("_multiMonthCalendar",JSON.stringify(_mmc_mgr._mmc));
-        localStorage.setItem("_mgr",JSON.stringify(_mmc_mgr));
-        localStorage.setItem("_lastSent",JSON.stringify(true));
-
-        // sendMultiMonthCalendarToDb(_mmc_mgr);
 
         displayMultiMonthCalendar();
     })    
@@ -132,7 +128,7 @@ export function saveDailyInfoListener(_mmc){
     });   
 }
 
-async function sendMMCToDatabase(){
+export async function sendMMCToDatabase(){
     await fetch('/api/multiMonthCalendar', {
         method: "POST",
         headers: {
@@ -153,7 +149,6 @@ async function sendMMCToDatabase(){
 export function saveMMCListener(_mmc){
     const _deleteButton = document.getElementById("_saveCalendarToDBButton");
     _deleteButton.addEventListener("click",() => {
-        // console.log("weDeleting");
         if(confirm("are you sure?")){
             console.log("here")
             sendMMCToDatabase();
@@ -163,7 +158,8 @@ export function saveMMCListener(_mmc){
 }
 
 
-async function getMMCFromDatabase(){
+export default async function getMMCFromDatabase(){
+    var res;
     await fetch('/api/multiMonthCalendar', {
         method: "GET",
         headers: {
@@ -171,8 +167,12 @@ async function getMMCFromDatabase(){
             'x-access-token': `${JSON.parse(localStorage.getItem("auth")).accessToken}`
         }
     })
-        .then((response) => {
-            console.log(response);
+        .then(async (response) => {
+            res = {
+                statusCode: response.status,
+                payload: await response.json()
+            }
         }
         )
+    return res;
 }
