@@ -19,7 +19,7 @@
     </div>
 
     <div id = "logoutButton_div">
-        <form action="/" class = "row justify-content-center">
+        <form action="/" onsubmit="localStorage.removeItem('auth')" class = "row justify-content-center">
             <button type = "submit" class = "entryButton">Logout</button>
         </form>
     </div>
