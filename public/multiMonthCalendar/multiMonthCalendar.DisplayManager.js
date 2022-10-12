@@ -5,7 +5,6 @@ import getMMCFromDatabase from "./multiMonthCalendar.EventListeners.js";
 
 async function loadMMCOnPageLoad(){
     window.addEventListener("load",async () => {
-        // const res = await getMMCFromDatabase();
         getMMCFromDatabase()
             .then((res) => {
                 if(res.statusCode === 200){
