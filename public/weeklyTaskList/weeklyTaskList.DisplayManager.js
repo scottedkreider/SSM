@@ -7,10 +7,10 @@ const weeklyTaskList_div = document.getElementById("weeklyTaskListDiv");
 //      list" button
 // Else display the weekly task list that is in local storage
 
-const currentWeeklyTaskList = localStorage.getItem("weeklyTaskList_model")
+const currentWeeklyTaskList = localStorage.getItem("_weeklyTaskList")
 
-!currentWeeklyTaskList
-    ? displayStartNewWeeklyTaskListButton()
+!mmcIsActive()
+    ? (displayNoMMCWarning(), displayStartNewWeeklyTaskListButton())
     : displayWeeklyTaskList(currentWeeklyTaskList);
 
 
@@ -30,16 +30,30 @@ function displayStartNewWeeklyTaskListButton() {
         () => startNewWeeklyTaskList());
 }
 
+function mmcIsActive(){
+    if(localStorage.getItem("_multiMonthCalendar")) return true;
+    else return false;
+}
+
+function displayNoMMCWarning() {
+    const displayNoMMCWarning_div = document.createElement("div");
+    const displayNoMMCWarning_h1 = document.createElement("h1");
+    displayNoMMCWarning_h1.innerText = "No MultiMonthCalendar Created - Please Do that first";
+    displayNoMMCWarning_div.appendChild(displayNoMMCWarning_h1);
+
+    weeklyTaskList_div.appendChild(displayNoMMCWarning_div);
+}
+
 
 // Upon hearing the button - start a new Weekly Task List
 function startNewWeeklyTaskList() {
-    const weeklyTaskList_model =
+    const _weeklyTaskList =
     {
-        name: "week 1"
+        name: "week 2"
     };
 
     // Save the new Weekly Task List to local storage
-    localStorage.setItem("weeklyTaskList_model", JSON.stringify(weeklyTaskList_model));
+    localStorage.setItem("_weeklyTaskList", JSON.stringify(_weeklyTaskList));
 
     // Clear the screen
     weeklyTaskList_div.replaceChildren();
@@ -47,7 +61,7 @@ function startNewWeeklyTaskList() {
     // Display the Weekly Task List on the screen
     const newWeeklyTaskList_div = document.createElement("div");
     const newWeeklyTaskListTitle_text =
-        document.createTextNode(localStorage.getItem("weeklyTaskList_model"));
+        document.createTextNode(localStorage.getItem("_weeklyTaskList"));
     newWeeklyTaskList_div.append(newWeeklyTaskListTitle_text);
     weeklyTaskList_div.append(newWeeklyTaskList_div);
 
@@ -57,7 +71,7 @@ function startNewWeeklyTaskList() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: `${localStorage.getItem("weeklyTaskList_model")}`
+        body: `${localStorage.getItem("_weeklyTaskList")}`
     })
         .then((response) => {
             console.log(response.status);
@@ -68,6 +82,9 @@ function startNewWeeklyTaskList() {
 }
 
 function displayWeeklyTaskList(currentWeeklyTaskList) {
-    console.log("Local Storage");
-    console.log(currentWeeklyTaskList);
+    const newWeeklyTaskList_div = document.createElement("div");
+    const newWeeklyTaskListTitle_text =
+        document.createTextNode(currentWeeklyTaskList);
+    newWeeklyTaskList_div.append(newWeeklyTaskListTitle_text);
+    weeklyTaskList_div.append(newWeeklyTaskList_div);
 }
