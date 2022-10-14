@@ -32,7 +32,6 @@ export default async function displayMultiMonthCalendar() {
     if (!localStorage.getItem("_multiMonthCalendar")) {
         multiMonthCalendarDisplay.buildMultiMonthCalendarDateEntryDisplay();
     } else {
-
         var _mgr = JSON.parse(localStorage.getItem("_multiMonthCalendar"));
 
         multiMonthCalendarDisplay.insertMultiMonthCalendarToDisplay(_mgr);

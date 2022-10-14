@@ -55,7 +55,7 @@ export function deleteMMCListener(){
         // console.log("weDeleting");
         if(confirm("are you sure?")){
             localStorage.removeItem("_multiMonthCalendar");
-            localStorage.removeItem("_mgr");
+            deleteMMCFromDatabase();
             displayMultiMonthCalendar();
         }
     })
@@ -175,4 +175,20 @@ export default async function getMMCFromDatabase(){
         }
         )
     return res;
+}
+
+
+export async function deleteMMCFromDatabase(){
+    await fetch('/api/multiMonthCalendar', {
+        method: "DELETE",
+        headers: {
+            'Authorization': `${JSON.parse(localStorage.getItem("auth")).username}`,
+            'x-access-token': `${JSON.parse(localStorage.getItem("auth")).accessToken}`,
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(async (response) => {
+            console.log(response);
+        }
+        )
 }

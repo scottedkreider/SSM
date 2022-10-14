@@ -9,4 +9,8 @@ module.exports = function(app) {
     app.post("/api/multiMonthCalendar"
         ,[authJwt.verifyToken]
         ,controller.saveMMCData);
+
+    app.delete("/api/multiMonthCalendar"
+        ,[authJwt.verifyToken]
+        ,controller.deleteMMCData);
 }

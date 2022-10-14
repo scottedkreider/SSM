@@ -48,3 +48,29 @@ exports.saveMMCData = (req, res) => {
         }
       });
 }
+
+
+
+exports.deleteMMCData = (req, res) => {
+    console.log("deleting");
+    console.log(req.headers.authorization);
+    MultiMonthCalendar.findOneAndDelete({
+      username: req.headers.authorization
+    })
+      .exec((err, mmc) => {
+        if (err) {
+          res.status(500).send({ message: err });
+          return;
+        }
+
+        if (!mmc) {
+            res.status(401).send({ message: "Failed! MMC not found!" });
+            return;
+          }
+  
+        res.status(200).send(
+            {
+                message: "data successfully deleted",
+            });
+      });
+}
