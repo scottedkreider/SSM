@@ -5,10 +5,3 @@ module.exports = function(app) {
     app.post("/api/weeklyTaskList",
         controller.saveWeeklyTaskListData);
 };
-
-
-
-// module.exports = function(app) {
-//     app.post("/api/weeklyTaskList"
-//         ,controller.saveWeeklyTaskListData());
-// }
