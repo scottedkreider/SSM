@@ -49,8 +49,6 @@ exports.saveMMCData = (req, res) => {
       });
 }
 
-
-
 exports.deleteMMCData = (req, res) => {
     console.log("deleting");
     console.log(req.headers.authorization);

@@ -12,14 +12,3 @@ const WeeklyTaskList = mongoose.model(
 );
 
 module.exports = WeeklyTaskList;
-
-
-// const WeeklyTaskList = mongoose.model(
-//     "Weekly Task List",
-//     new mongoose.Schema({
-//       username: String,
-//       email: String,
-//       password: String
-//     })
-//   );
-  
