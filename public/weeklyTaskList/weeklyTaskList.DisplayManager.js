@@ -7,12 +7,30 @@ const weeklyTaskList_div = document.getElementById("weeklyTaskListDiv");
 //      list" button
 // Else display the weekly task list that is in local storage
 
-const currentWeeklyTaskList = localStorage.getItem("_weeklyTaskList")
+displayStartNewWeeklyTaskListButton()
 
 !mmcIsActive()
-    ? (displayNoMMCWarning(), displayStartNewWeeklyTaskListButton())
-    : displayWeeklyTaskList(currentWeeklyTaskList);
+    ? displayNoMMCWarning()
+    : displayWeeklyTaskList();
 
+function pullWTLFromDatabase(){
+    var res;
+    fetch('/api/weeklyTaskList', {
+        method: "GET",
+        headers: {
+            'Authorization': `${JSON.parse(localStorage.getItem("auth")).username}`,
+            'x-access-token': `${JSON.parse(localStorage.getItem("auth")).accessToken}`
+        }
+    })
+        .then(async (response) => {
+            res = {
+                statusCode: response.status,
+                payload: await response.json()
+            }
+        }
+        )
+    localStorage.setItem("_weeklyTaskList",JSON.stringify(res))
+}
 
 function displayStartNewWeeklyTaskListButton() {
     // Build the button
@@ -49,7 +67,7 @@ function displayNoMMCWarning() {
 function startNewWeeklyTaskList() {
     const _weeklyTaskList =
     {
-        name: "week 2"
+        name: "week 8"
     };
 
     // Save the new Weekly Task List to local storage
@@ -66,22 +84,26 @@ function startNewWeeklyTaskList() {
     weeklyTaskList_div.append(newWeeklyTaskList_div);
 
     // Listen for navigating away from the page and send weeklyTaskList_model to the database
-    fetch('http://localhost:5000/api/weeklyTaskList', {
+    fetch('/api/weeklyTaskList', {
         method: "POST",
         headers: {
+            'Authorization': `${JSON.parse(localStorage.getItem("auth")).username}`,
+            'x-access-token': `${JSON.parse(localStorage.getItem("auth")).accessToken}`,
             'Content-Type': 'application/json'
         },
-        body: `${localStorage.getItem("_weeklyTaskList")}`
+        body: JSON.stringify({
+            _wtl: localStorage.getItem("_weeklyTaskList")
+        })
     })
-        .then((response) => {
-            console.log(response.status);
+        .then(async (response) => {
+            console.log(response);
         }
-        );
-
-
+        )
 }
 
-function displayWeeklyTaskList(currentWeeklyTaskList) {
+function displayWeeklyTaskList() {
+    const currentWeeklyTaskList = localStorage.getItem("_weeklyTaskList")
+
     const newWeeklyTaskList_div = document.createElement("div");
     const newWeeklyTaskListTitle_text =
         document.createTextNode(currentWeeklyTaskList);
