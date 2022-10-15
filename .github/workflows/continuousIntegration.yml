@@ -1,63 +1,16 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Continuous Integration
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+name: Push Container to Heroku
+
+on: [push]
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    env: 
-      CI_COMMIT_MESSAGE: Continuous Integration Build Artifacts
-      CI_COMMIT_AUTHOR: Continuous Integration
     steps:
-    - uses: actions/checkout@v3
-
-    # Build steps
-    - uses: actions/setup-node@v3
-      with:
-        node-version: '12' 
-    - name: Node Install
-      run: npm ci
-
-    # Commit and push all changed files.
-    - name: GIT Commit Build Artifacts (coverage, dist, devdist, docs)
-      # Only run on main branch push (e.g. after pull request merge).
-      if: github.event_name == 'push'
-      run: |
-        git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
-        git config --global user.email "username@users.noreply.github.com"
-        git commit -a -m "${{ env.CI_COMMIT_MESSAGE }}"
-        git push
-
-  custom-deploy: 
-    runs-on: ubuntu-latest 
-    steps: 
-      - name: Check out repository 
-        uses: actions/checkout@v2 
-        with: 
-          fetch-depth: 0 
-      - name: Heroku login credentials 
-        run: | 
-          cat > ~/.netrc <<EOF 
-            machine api.heroku.com 
-              login $HEROKU_EMAIL 
-              password $HEROKU_API_KEY 
-            machine git.heroku.com 
-              login $HEROKU_EMAIL 
-              password: $HEROKU_API_KEY 
-          EOF 
-        env: 
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }} 
-          HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }} 
-      - name: Add Heroku remote 
-        run: heroku git:remote --app $HEROKU_APP_NAME 
-        env: 
-          HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }} 
-      - name: Push to Heroku 
-        run: git push heroku master 
+    - uses: actions/checkout@v1
+    - name: Login to Heroku Container registry
+      env: 
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      run: heroku container:login 
