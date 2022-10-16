@@ -29,7 +29,7 @@ jobs:
       run: npm run test
     - name: Stop containers
       if: always()
-      run: docker stop ssm
+      run: docker kill $(docker ps -q)
   build:
     runs-on: ubuntu-latest
     steps:
