@@ -50,3 +50,12 @@ QUnit.test('(1) Signin successfully with a username and a password', assert => {
         }
     );
 })
+
+
+// 	- (success) Signin successfully with a username and password
+// 		○ (pre) A username already exists
+// 		○ Check that response = 200
+// 		○ Check that JSON matches
+QUnit.test('(2) Example failure', assert => {
+    assert.equal(1,2);
+})
