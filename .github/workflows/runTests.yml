@@ -1,0 +1,32 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Push Container to Heroku
+
+on: 
+  push:
+    branches:
+      - master
+jobs:
+
+  test:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Build containers
+      run: docker build -t ssm .
+    - name: Start containers
+      run: docker run -dp 5000:5000 ssm
+    - name: Install node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14.x
+    - name: Install dependencies
+      run: npm install
+    - name: Run tests
+      run: npm run test
+    - name: Stop containers
+      if: always()
+      run: docker kill $(docker ps -q)
