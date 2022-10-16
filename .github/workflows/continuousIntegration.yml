@@ -7,8 +7,29 @@ on:
   push:
     branches:
       - master
-
 jobs:
+
+  test:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Build containers
+      run: docker build -t ssm .
+    - name: Start containers
+      run: docker run -dp 5000:5000 ssm
+    - name: Install node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14.x
+    - name: Install dependencies
+      run: npm install
+    - name: Run tests
+      run: npm run test
+    - name: Stop containers
+      if: always()
+      run: docker stop ssm
   build:
     runs-on: ubuntu-latest
     steps:
@@ -24,7 +45,7 @@ jobs:
     - name: Release
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} web 
+      run: heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} web
   docker:
     runs-on: ubuntu-latest
     steps:
@@ -42,3 +63,4 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/student-schedule-manager:latest
+
