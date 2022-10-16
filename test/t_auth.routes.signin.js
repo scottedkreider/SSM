@@ -57,5 +57,5 @@ QUnit.test('(1) Signin successfully with a username and a password', assert => {
 // 		○ Check that response = 200
 // 		○ Check that JSON matches
 QUnit.test('(2) Example failure', assert => {
-    assert.equal(1,1);
+    assert.equal(1,2);
 })
