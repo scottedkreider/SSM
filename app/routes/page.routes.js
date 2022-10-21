@@ -38,6 +38,14 @@ module.exports = function(app) {
             res.render(path.join("pages/weeklyTaskList"));
     })
 
+    // Weekly Calendar route
+    // Verify access
+    app.get('/weeklyCalendar',
+        (req, res) => {
+            console.log('weeklyCalendar');
+            res.render(path.join("pages/weeklyCalendar"));
+    })
+
     // MultiMonthCalendar route
     // Verify access
     app.get('/multiMonthCalendar',
