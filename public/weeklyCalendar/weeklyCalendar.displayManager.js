@@ -1,3 +1,10 @@
 const weeklyCalendarDiv = document.getElementById("weeklyCalendarDiv");
 
-weeklyCalendarDiv.innerText = "Weekly Calendar"
+let ec = new EventCalendar(document.getElementById('weeklyCalendarDiv'), {
+    view: 'timeGridWeek',
+    events: [
+        // your list of events
+    ]
+});
+
+// weeklyCalendarDiv.innerText = "Weekly Calendar"
