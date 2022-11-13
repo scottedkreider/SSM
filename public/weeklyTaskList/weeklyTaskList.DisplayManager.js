@@ -1,3 +1,4 @@
+"use strict";
 
 ///////////////////////////////////////
 const weeklyTaskListDiv = document.getElementById("weeklyTaskListDiv");
