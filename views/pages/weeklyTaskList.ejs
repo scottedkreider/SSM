@@ -12,10 +12,12 @@
     <%- include('../partials/_headerLoggedIn'); %>
 
     <div id = "appDiv" class = "appDiv flex-container">
-        <div id="weeklyTaskListDiv" class = "align-items-center"></div>
+        <div id="weeklyTaskListDiv" class = "align-items-center container column"></div>
     </div>
 
     <%- include('../partials/_bootstrapJsCDNLink'); %>
-    <script src="../../public/weeklyTaskList/weeklyTaskList.DisplayManager.js" type = "module"></script>
+    <script src="../../public/weeklyTaskList/tableBuilder.js" type = "module"></script>
+    <script src="../../public/weeklyTaskList/taskCreator.js" type = "module"></script>
+    <script src="../../public/weeklyTaskList/weeklyTaskList.displayManager.js" type = "module"></script>
 </body>
 </html>
