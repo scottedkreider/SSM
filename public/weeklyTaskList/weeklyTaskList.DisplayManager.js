@@ -387,10 +387,6 @@ function connectCheckBoxListener(){
             //  On click
             //      Toggle checkbox and update appearance accordingly
             //
-            console.log(checkbox.checked);
-            console.log(checkbox.id);
-            console.log(checkbox.parentElement.id);
-
             const categoryId = checkbox.parentElement.id.split("_")[1];
             const taskId = checkbox.id.split("_")[1];
 
@@ -398,7 +394,6 @@ function connectCheckBoxListener(){
             const categoryRow = weeklyTaskList.categoryList.find(category => category.id == categoryId);
             const taskRow = categoryRow.tasks.find(task => task.id == taskId);
             taskRow.done = checkbox.checked;
-            console.log(taskRow);
 
             localStorage.setItem("weeklyTaskList",JSON.stringify(weeklyTaskList));
             displayWeeklyTaskListDiv(weeklyTaskListDiv);
