@@ -97,5 +97,5 @@ var weeklyTaskList = {
 
 // console.log(taskList)
 localStorage.setItem("weeklyTaskList_initialize",JSON.stringify(weeklyTaskList))
-// localStorage.setItem("weeklyTaskList",JSON.stringify(weeklyTaskList))
+localStorage.setItem("weeklyTaskList",JSON.stringify(weeklyTaskList))
 
