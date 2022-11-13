@@ -21,3 +21,38 @@ input:disabled {
     background-color: lightyellow;
     border-style: solid;
 }
+
+
+
+h1 {
+    color: blue;
+}
+
+.container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.container > * {
+    flex: 1 2 0;
+}
+
+.row {
+    flex-direction: row;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.taskCategory {
+    background: lightblue;
+}
+
+.taskItem {
+    background: lightyellow;
+}
+
+.done {
+    background: pink;
+}
