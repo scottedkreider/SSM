@@ -28,7 +28,10 @@ jobs:
       run: npm run test
     - name: Stop containers
       if: always()
-      run: docker kill $(docker ps -q)
+      run: docker stop $(docker ps -a -q)
+    - name: Remove containers
+      if: always()
+      run: docker rm $(docker ps -a -q)
 
   docker:
     needs: test
