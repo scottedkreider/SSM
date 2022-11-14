@@ -46,6 +46,11 @@ function weeklyTaskListBodyDiv(){
     const weeklyTaskListBodyDiv = document.createElement("div");
     weeklyTaskListBodyDiv.id = "weeklyTaskListBodyDiv";
     
+    if(!localStorage.getItem("weeklyTaskList")){
+        initializeTaskList();
+        console.log("not here")
+    }
+
     // Get weeklyTaskList from localStorage
     const weeklyTaskList = JSON.parse(localStorage.getItem("weeklyTaskList"));
 
@@ -61,6 +66,50 @@ function weeklyTaskListBodyDiv(){
     weeklyTaskListBodyDiv.appendChild(weeklyTaskListBodyDisplayDiv);
 
     return weeklyTaskListBodyDiv;
+}
+
+function initializeTaskList() {
+    const taskNew1 = {
+        done: 0,
+        id: 1,
+        name: "example task name",
+        worktime: ["2022-12-24"],
+        duedate: "2022-12-25",
+        numberOfUpdates: 0
+    }
+
+    const taskNew2 = {
+        done: 0,
+        id: 2,
+        name: "example task name",
+        worktime: ["2022-12-24"],
+        duedate: "2022-12-25",
+        numberOfUpdates: 0
+    }
+
+    const categoryNew1 = {
+        name: "example category name 1",
+        id: 1,
+        idIncrementer: 2,
+        numberOfActiveTasks: 2,
+        tasks: [taskNew1, taskNew2]
+    }
+
+    const categoryNew2 = {
+        name: "example category name 2",
+        id: 1,
+        idIncrementer: 2,
+        numberOfActiveTasks: 2,
+        tasks: [taskNew1, taskNew2]
+    }
+
+    const weeklyTaskListNew = {
+        idIncrementer: 1,
+        numberOfActiveCategories: 1,
+        categoryList: [categoryNew1, categoryNew2]
+    }
+
+    localStorage.setItem("weeklyTaskList", JSON.stringify(weeklyTaskListNew))
 }
 
 function displayTaskCategory(categoryToDisplay){
