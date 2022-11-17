@@ -132,12 +132,12 @@ function connectCheckBoxListener(divToRefresh){
             const categoryId = checkbox.parentElement.id.split("_")[1];
             const taskId = checkbox.id.split("_")[1];
 
-            const weeklyTaskList = JSON.parse(localStorage.getItem("weeklyTaskList"));
+            const weeklyTaskList = JSON.parse(localStorage.getItem("_weeklyTaskList"));
             const categoryRow = weeklyTaskList.categoryList.find(category => category.id == categoryId);
             const taskRow = categoryRow.tasks.find(task => task.id == taskId);
             taskRow.done = checkbox.checked;
 
-            localStorage.setItem("weeklyTaskList",JSON.stringify(weeklyTaskList));
+            localStorage.setItem("_weeklyTaskList",JSON.stringify(weeklyTaskList));
             displayWeeklyTaskListDiv(divToRefresh);
         });
     })
