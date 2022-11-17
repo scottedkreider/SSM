@@ -56,16 +56,21 @@ function connectEditTaskCategoryListener(divToRefresh){
             // }
             const categoryId = button.id.split("_")[1];
 
-            const input = document.getElementById(`catHeader_${categoryId}`);
-            input.disabled ? button.innerText = "Save Category" : button.innerText = "Edit Category"
-            input.disabled = !input.disabled;
-            if(input.disabled){
+            const catHeader = document.getElementById(`catHeader_${categoryId}`);
+            if(catHeader.disabled){
+                button.innerText = "Save Category"
+                catHeader.removeAttribute("disabled");
+            } else{
+                button.innerText = "Edit Category"
+                catHeader.setAttribute("disabled","true")
+
                 const weeklyTaskList = JSON.parse(localStorage.getItem("_weeklyTaskList"));
                 const categoryRow = weeklyTaskList.categoryList.find(category => category.id == categoryId);
-                categoryRow.name = input.value;
+                categoryRow.name = catHeader.value;
                 localStorage.setItem("_weeklyTaskList",JSON.stringify(weeklyTaskList));
+
+                displayWeeklyTaskListDiv(divToRefresh);
             }
-            displayWeeklyTaskListDiv(divToRefresh);
         });
     })
 }
