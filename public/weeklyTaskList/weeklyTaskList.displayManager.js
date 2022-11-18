@@ -17,7 +17,7 @@ const weeklyTaskListDiv = document.getElementById("weeklyTaskListDiv");
 // Apply dynamic visual elements
 //      such as highlighting of rows when checked off
 
-function applyCheckboxElementUpdates(){
+function applyCheckboxVisualElementUpdates(){
     const checkBoxes = document.querySelectorAll(".doneCheckBox");
     checkBoxes.forEach((checkbox) => {
         if(checkbox.checked){
@@ -29,7 +29,7 @@ function applyCheckboxElementUpdates(){
 }
 
 function applyDynamicVisualElements(){
-    applyCheckboxElementUpdates();
+    applyCheckboxVisualElementUpdates();
 }
 ///////////////////////////////////////
 
