@@ -37,11 +37,6 @@ export default async function displayMultiMonthCalendar() {
         multiMonthCalendarDisplay.insertMultiMonthCalendarToDisplay(_mgr);
         multiMonthCalendarDisplay.buildMultiMonthCalendarDisplay();
     }
-
-    // window.addEventListener("onunload",async () => {
-    //     console.log("at the end");
-    //     await sendMMCToDatabase();
-    // });
 }
 
 displayMultiMonthCalendar()

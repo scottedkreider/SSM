@@ -1,5 +1,5 @@
 // // import MultiMonthCalendarManager from "../public/multiMonthCalendar/multiMonthCalendar.Model.js";
-// const MultiMonthCalendarManager = require("../public/multiMonthCalendar/multiMonthCalendar.Model");
+// const MultiMonthCalendarManager = require("../public/multiMonthCalendar/multiMonthCalendar.Model.js");
 
 // QUnit.module('(MMC.M) Start new multimonth calendar');
 
