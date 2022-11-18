@@ -158,24 +158,24 @@ export function saveMMCListener(_mmc){
 }
 
 
-export default async function getMMCFromDatabase(){
-    var res;
-    await fetch('/api/multiMonthCalendar', {
-        method: "GET",
-        headers: {
-            'Authorization': `${JSON.parse(localStorage.getItem("auth")).username}`,
-            'x-access-token': `${JSON.parse(localStorage.getItem("auth")).accessToken}`
-        }
-    })
-        .then(async (response) => {
-            res = {
-                statusCode: response.status,
-                payload: await response.json()
-            }
-        }
-        )
-    return res;
-}
+// export default async function getMMCFromDatabase(){
+//     var res;
+//     await fetch('/api/multiMonthCalendar', {
+//         method: "GET",
+//         headers: {
+//             'Authorization': `${JSON.parse(localStorage.getItem("auth")).username}`,
+//             'x-access-token': `${JSON.parse(localStorage.getItem("auth")).accessToken}`
+//         }
+//     })
+//         .then(async (response) => {
+//             res = {
+//                 statusCode: response.status,
+//                 payload: await response.json()
+//             }
+//         }
+//         )
+//     return res;
+// }
 
 
 export async function deleteMMCFromDatabase(){

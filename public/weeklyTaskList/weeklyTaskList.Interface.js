@@ -1,6 +1,6 @@
 import {
-    addTaskCategoryButton, editCategoryButton, deleteCategoryButton
-        ,addTaskButton, taskToDisplayDiv
+    addTaskCategoryButton, saveTaskListToDBButton, editCategoryButton
+        ,deleteCategoryButton,addTaskButton, taskToDisplayDiv
 } from "./weeklyTaskList.divSnippets.js";
 
 
@@ -14,6 +14,7 @@ export function weeklyTaskListHeaderDiv(){
     taskListHeader_h1.innerText = "Weekly Task List"
 
     weeklyTaskListHeaderDiv.appendChild(taskListHeader_h1);
+    weeklyTaskListHeaderDiv.appendChild(saveTaskListToDBButton());
     weeklyTaskListHeaderDiv.appendChild(addTaskCategoryButton());
 
     return weeklyTaskListHeaderDiv;
@@ -27,7 +28,7 @@ export function weeklyTaskListBodyDiv(){
     const weeklyTaskListBodyDiv = document.createElement("div");
     weeklyTaskListBodyDiv.id = "weeklyTaskListBodyDiv";
     
-    if(!localStorage.getItem("_weeklyTaskList")){
+    if(!localStorage.getItem("_multiMonthCalendar") && !localStorage.getItem("_weeklyTaskList")){
         initializeTaskList();
         console.log("not here")
     }

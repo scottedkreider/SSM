@@ -1,22 +1,22 @@
 "use strict";
 
 import MultiMonthCalendarDisplay from "./multiMonthCalendar.Interface.js";
-import getMMCFromDatabase from "./multiMonthCalendar.EventListeners.js";
+// import getMMCFromDatabase from "./multiMonthCalendar.EventListeners.js";
 
-async function loadMMCOnPageLoad(){
-    window.addEventListener("load",async () => {
-        getMMCFromDatabase()
-            .then((res) => {
-                if(res.statusCode === 200){
-                    localStorage.setItem("_multiMonthCalendar",JSON.stringify(res.payload.mmc));
-                } else if (res.statusCode === 401) {
-                    localStorage.removeItem("_multiMonthCalendar");
-                } else {
-                    console.log("load MMC error")
-                }
-            })
-    });
-}
+// async function loadMMCOnPageLoad(){
+//     window.addEventListener("load",async () => {
+//         getMMCFromDatabase()
+//             .then((res) => {
+//                 if(res.statusCode === 200){
+//                     localStorage.setItem("_multiMonthCalendar",JSON.stringify(res.payload.mmc));
+//                 } else if (res.statusCode === 401) {
+//                     localStorage.removeItem("_multiMonthCalendar");
+//                 } else {
+//                     console.log("load MMC error")
+//                 }
+//             })
+//     });
+// }
 
 export default async function displayMultiMonthCalendar() {
     const multiMonthCalendarDiv = document.getElementById("multiMonthCalendarDiv");
@@ -44,5 +44,4 @@ export default async function displayMultiMonthCalendar() {
     // });
 }
 
-await loadMMCOnPageLoad()
-    .then(async () => await displayMultiMonthCalendar());
+displayMultiMonthCalendar()

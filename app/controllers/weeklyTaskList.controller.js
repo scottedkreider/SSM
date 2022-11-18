@@ -8,7 +8,9 @@ exports.saveWeeklyTaskListData = (req, res) => {
         },
         {
             username: req.headers.authorization,
-            name: "Week 1"
+            idIncrementer: JSON.parse(req.body._wtl).idIncrementer,
+            numberOfActiveCategories: JSON.parse(req.body._wtl).numberOfActiveCategories,
+            categoryList: JSON.parse(req.body._wtl).categoryList
         },
         {
             upsert: true,

@@ -7,7 +7,10 @@ const WeeklyTaskList = mongoose.model(
         type: String,
         unique: true
     },
-    name: String
+    idIncrementer: Number,
+    numberOfActiveCategories: Number,
+    categoryList: []
+
   })
 );
 

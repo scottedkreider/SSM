@@ -11,6 +11,19 @@ export function addTaskCategoryButton(){
 }
 
 
+export function saveTaskListToDBButton(){
+    const saveTaskListToDBButtonDiv = document.createElement("div");
+
+    const saveTaskListToDBButton = document.createElement("button");
+    saveTaskListToDBButton.id = "saveTaskListToDBButton";
+    saveTaskListToDBButton.innerText = "Save Task List to DB";
+
+    saveTaskListToDBButtonDiv.appendChild(saveTaskListToDBButton);
+
+    return saveTaskListToDBButtonDiv;
+}
+
+
 export function editCategoryButton(categoryId){
     const editCategoryButtonDiv = document.createElement("div");
     const editCategoryButton = document.createElement("button");
