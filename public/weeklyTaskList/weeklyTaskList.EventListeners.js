@@ -4,7 +4,7 @@ import {
 
 import {
     addNewTaskCategory, deleteTaskCategory, addNewTaskToTaskCategory
-        ,deleteTaskFromTaskCategory
+    , deleteTaskFromTaskCategory
 } from "./weeklyTaskList.Model.js";
 
 ///////////////////////////////////////
@@ -46,12 +46,12 @@ import {
 //     return res;
 // }
 
-function connectSaveTaskListToDBListener(divToRefresh){
-    document.getElementById("saveTaskListToDBButton").addEventListener("click",() => {
+function connectSaveTaskListToDBListener(divToRefresh) {
+    document.getElementById("saveTaskListToDBButton").addEventListener("click", () => {
         // On click
         //      Add new row with places to fill in the new info for the task category at the bottom of the category list (but before MISC)
-        
-        if(confirm("Are you sure you want to save?")){
+
+        if (confirm("Are you sure you want to save?")) {
             sendWTLToDatabase();
         }
         displayWeeklyTaskListDiv(divToRefresh);
@@ -59,7 +59,7 @@ function connectSaveTaskListToDBListener(divToRefresh){
 }
 
 
-export async function sendWTLToDatabase(){
+export async function sendWTLToDatabase() {
     await fetch('/api/weeklyTaskList', {
         method: "POST",
         headers: {
@@ -77,27 +77,27 @@ export async function sendWTLToDatabase(){
         )
 }
 
-function connectAddNewTaskCategoryListener(divToRefresh){
-    document.getElementById("addTaskCategoryButton").addEventListener("click",() => {
+function connectAddNewTaskCategoryListener(divToRefresh) {
+    document.getElementById("addTaskCategoryButton").addEventListener("click", () => {
         // On click
         //      Add new row with places to fill in the new info for the task category at the bottom of the category list (but before MISC)
         const categoryName = window.prompt("Category name", "enter category name");
-        if(categoryName) addNewTaskCategory(categoryName);
+        if (categoryName) addNewTaskCategory(categoryName);
         displayWeeklyTaskListDiv(divToRefresh);
     });
 }
 
 
-function connectDeleteTaskCategoryListener(divToRefresh){
+function connectDeleteTaskCategoryListener(divToRefresh) {
     const deleteTaskCategoryButtons = document.querySelectorAll(".deleteTaskCategory");
     deleteTaskCategoryButtons.forEach((button) => {
-        button.addEventListener("click",() => {
+        button.addEventListener("click", () => {
             // On click
             //      Require confirmation of deletion
             //      Upon confirmation click
             //              Update dataset in LocalStorage
             //              Refresh current div
-            if(window.confirm("Are you sure you want to delete this task category?")){
+            if (window.confirm("Are you sure you want to delete this task category?")) {
                 deleteTaskCategory(button.id.split("_")[1]);
                 displayWeeklyTaskListDiv(divToRefresh);
             };
@@ -106,17 +106,17 @@ function connectDeleteTaskCategoryListener(divToRefresh){
 }
 
 
-function connectEditTaskCategoryListener(divToRefresh){
+function connectEditTaskCategoryListener(divToRefresh) {
 
     const editTaskCategoryButtons = document.querySelectorAll(".editTaskCategory");
     editTaskCategoryButtons.forEach((button) => {
-        button.addEventListener("click",() => {
-        // On toggle click (EDIT)
-        //      Open input fields for editing
-        // On toggle click (SAVE)
-        //      Close input fields for editing
-        //      Update dataset in LocalStorage
-        //      Refresh current div
+        button.addEventListener("click", () => {
+            // On toggle click (EDIT)
+            //      Open input fields for editing
+            // On toggle click (SAVE)
+            //      Close input fields for editing
+            //      Update dataset in LocalStorage
+            //      Refresh current div
             // const taskName = window.prompt("Task name", "enter task name");
             // if(taskName){
             //     addNewTaskToTaskCategory(button.id.split("_")[1], taskName);
@@ -125,17 +125,17 @@ function connectEditTaskCategoryListener(divToRefresh){
             const categoryId = button.id.split("_")[1];
 
             const catHeader = document.getElementById(`catHeader_${categoryId}`);
-            if(catHeader.disabled){
+            if (catHeader.disabled) {
                 button.innerText = "Save Category"
                 catHeader.removeAttribute("disabled");
-            } else{
+            } else {
                 button.innerText = "Edit Category"
-                catHeader.setAttribute("disabled","true")
+                catHeader.setAttribute("disabled", "true")
 
                 const weeklyTaskList = JSON.parse(localStorage.getItem("_weeklyTaskList"));
                 const categoryRow = weeklyTaskList.categoryList.find(category => category.id == categoryId);
                 categoryRow.name = catHeader.value;
-                localStorage.setItem("_weeklyTaskList",JSON.stringify(weeklyTaskList));
+                localStorage.setItem("_weeklyTaskList", JSON.stringify(weeklyTaskList));
 
                 displayWeeklyTaskListDiv(divToRefresh);
             }
@@ -143,17 +143,17 @@ function connectEditTaskCategoryListener(divToRefresh){
     })
 }
 
-function connectAddNewTaskToTaskCategoryListener(divToRefresh){
+function connectAddNewTaskToTaskCategoryListener(divToRefresh) {
     const addTaskButtons = document.querySelectorAll(".addTask");
     addTaskButtons.forEach((button) => {
-        button.addEventListener("click",() => {
+        button.addEventListener("click", () => {
             // On click
             //      Add new row with places to fill in the new info for the task at the bottom of the current category
             //
             //      Add new row to the dataset in LocalStorage with default information and then reload the div
 
             const taskName = window.prompt("Task name", "enter task name");
-            if(taskName){
+            if (taskName) {
                 addNewTaskToTaskCategory(button.id.split("_")[1], taskName);
                 displayWeeklyTaskListDiv(divToRefresh);
             }
@@ -162,27 +162,58 @@ function connectAddNewTaskToTaskCategoryListener(divToRefresh){
 }
 
 
-function connectEditTaskInTaskCategoryListener(divToRefresh){
-    // On toggle click (EDIT)
-    //      Open input fields for editing
-    // On toggle click (SAVE)
-    //      Close input fields for editing
-    //      Update dataset in LocalStorage
-    //      Refresh current div
+function connectEditTaskInTaskCategoryListener(divToRefresh) {
 
+
+    const editTaskCategoryButtons = document.querySelectorAll(".editTask");
+    editTaskCategoryButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            // On toggle click (EDIT)
+            //      Open input fields for editing
+            // On toggle click (SAVE)
+            //      Close input fields for editing
+            //      Update dataset in LocalStorage
+            //      Refresh current div
+
+            const taskId = button.id.split("_")[1];
+            const categoryId = button.parentElement.parentElement.id.split("_")[1];
+            var all = document.querySelectorAll(`#c_${categoryId}_t_${taskId} input`);
+            all.forEach((element) => {
+                element.disabled = !element.disabled;
+            })
+
+            if (button.innerText == "Edit") {
+                button.innerText = "Save"
+            } else {
+                button.innerText = "Edit"
+            }
+
+            const weeklyTaskList = JSON.parse(localStorage.getItem("_weeklyTaskList"));
+            const categoryRow = weeklyTaskList.categoryList.find(category => category.id == categoryId);
+            const taskRow = categoryRow.tasks.find(task => task.id == taskId);
+            taskRow.duedate = document.querySelector(`#duedate_c${categoryId}_t${taskId}`).value;
+            taskRow.name = document.querySelector(`#taskname_c${categoryId}_t${taskId}`).value;
+            taskRow.worktime[0] = document.querySelector(`#worktime_c${categoryId}_t${taskId}`).value;
+            taskRow.workstarttime = document.querySelector(`#workstarttime_c${categoryId}_t${taskId}`).value;
+            taskRow.workduration = document.querySelector(`#workduration_c${categoryId}_t${taskId}`).value;
+            localStorage.setItem("_weeklyTaskList",JSON.stringify(weeklyTaskList));
+
+            // displayWeeklyTaskListDiv(divToRefresh);
+        });
+    })
 }
 
-function connectDeleteTaskFromTaskCategoryListener(divToRefresh){
+function connectDeleteTaskFromTaskCategoryListener(divToRefresh) {
     const deleteTaskButtons = document.querySelectorAll(".deleteTask");
     deleteTaskButtons.forEach((button) => {
-        button.addEventListener("click",() => {
+        button.addEventListener("click", () => {
             // On click
             //      Require confirmation of deletion
             //      Upon confirmation click
             //              Update dataset in LocalStorage
             //              Refresh current div
-            if(window.confirm("Are you sure you want to delete this task?")){
-                deleteTaskFromTaskCategory(button.parentElement.id.split("_")[1],button.id.split("_")[1]);
+            if (window.confirm("Are you sure you want to delete this task?")) {
+                deleteTaskFromTaskCategory(button.parentElement.id.split("_")[1], button.id.split("_")[1]);
                 displayWeeklyTaskListDiv(divToRefresh);
             };
         });
@@ -190,10 +221,10 @@ function connectDeleteTaskFromTaskCategoryListener(divToRefresh){
 }
 
 
-function connectCheckBoxListener(divToRefresh){
+function connectCheckBoxListener(divToRefresh) {
     const checkBoxes = document.querySelectorAll(".doneCheckBox");
     checkBoxes.forEach((checkbox) => {
-        checkbox.addEventListener("click",() => {
+        checkbox.addEventListener("click", () => {
             //  Static
             //      On checked
             //          Entire row is highlighted in red / text is strikethrough / greyed out
@@ -210,7 +241,7 @@ function connectCheckBoxListener(divToRefresh){
             const taskRow = categoryRow.tasks.find(task => task.id == taskId);
             taskRow.done = checkbox.checked;
 
-            localStorage.setItem("_weeklyTaskList",JSON.stringify(weeklyTaskList));
+            localStorage.setItem("_weeklyTaskList", JSON.stringify(weeklyTaskList));
             displayWeeklyTaskListDiv(divToRefresh);
         });
     })
@@ -219,7 +250,7 @@ function connectCheckBoxListener(divToRefresh){
 // id #
 // class .
 
-export function connectWeeklyTaskListEventListeners(divToRefresh){
+export function connectWeeklyTaskListEventListeners(divToRefresh) {
     connectSaveTaskListToDBListener(divToRefresh);
     connectAddNewTaskCategoryListener(divToRefresh);
     connectDeleteTaskCategoryListener(divToRefresh);

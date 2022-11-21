@@ -27,8 +27,8 @@ export function weeklyTaskListHeaderDiv(){
 export function weeklyTaskListBodyDiv(){
     const weeklyTaskListBodyDiv = document.createElement("div");
     weeklyTaskListBodyDiv.id = "weeklyTaskListBodyDiv";
-    
-    if(!localStorage.getItem("_multiMonthCalendar") && !localStorage.getItem("_weeklyTaskList")){
+        
+    if(!localStorage.getItem("_weeklyTaskList")){
         initializeTaskList();
         console.log("not here")
     }
@@ -56,6 +56,8 @@ function initializeTaskList() {
         id: 1,
         name: "example task name",
         worktime: ["2022-12-24"],
+        workstarttime: "11:20",
+        workduration: 2,
         duedate: "2022-12-25",
         numberOfUpdates: 0
     }
@@ -65,6 +67,8 @@ function initializeTaskList() {
         id: 2,
         name: "example task name",
         worktime: ["2022-12-24"],
+        workstarttime: "11:20",
+        workduration: 3,
         duedate: "2022-12-25",
         numberOfUpdates: 0
     }
