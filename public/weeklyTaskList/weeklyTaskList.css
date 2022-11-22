@@ -28,15 +28,6 @@ h1 {
     color: blue;
 }
 
-.container {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.container > * {
-    flex: 1 2 0;
-}
-
 .row {
     flex-direction: row;
 }

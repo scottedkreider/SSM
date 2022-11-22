@@ -1,32 +1,37 @@
-<div class = "appHeader">
-    <%- include('../partials/_logo'); %>
-    <div id = "dashboardButton_div">
-        <form action="/dashboard" class="row justify-content-center">
-            <button type = "submit" class = "entryButton">Dashboard</button>
-        </form>
+<nav>
+    <div class = "appHeader">
+        <%- include('../partials/_logo'); %>
+        <div class="container">
+            <div id = "dashboardButton_div">
+                <form action="/dashboard">
+                    <button type = "submit" class = "entryButton">Dashboard</button>
+                </form>
+            </div>
+        
+            <div id = "multiMonthCalendarButton_div">
+                <form action="multiMonthCalendar">
+                    <button type = "submit" class = "entryButton">MultiMonth Calendar</button>
+                </form>
+            </div>
+        
+            <div id = "weeklyTaskListButton_div">
+                <form action="weeklyTaskList">
+                    <button type = "submit" class = "entryButton">Weekly Task List</button>
+                </form>
+            </div>
+        
+            <div id = "weeklyCalendar_div">
+                <form action="weeklyCalendar">
+                    <button type = "submit" class = "entryButton">Weekly Calendar</button>
+                </form>
+            </div>
+        
+            <div id = "logoutButton_div">
+                <form action="/" onsubmit="localStorage.clear()">
+                    <button type = "submit" class = "entryButton">Logout</button>
+                </form>
+            </div>
+        </div>
     </div>
+</nav>
 
-    <div id = "multiMonthCalendarButton_div">
-        <form action="multiMonthCalendar" class = "row justify-content-center">
-            <button type = "submit" class = "entryButton">MultiMonth Calendar</button>
-        </form>
-    </div>
-
-    <div id = "weeklyTaskListButton_div">
-        <form action="weeklyTaskList" class = "row justify-content-center">
-            <button type = "submit" class = "entryButton">Weekly Task List</button>
-        </form>
-    </div>
-
-    <div id = "weeklyCalendar_div">
-        <form action="weeklyCalendar" class = "row justify-content-center">
-            <button type = "submit" class = "entryButton">Weekly Calendar</button>
-        </form>
-    </div>
-
-    <div id = "logoutButton_div">
-        <form action="/" onsubmit="localStorage.clear()" class = "row justify-content-center">
-            <button type = "submit" class = "entryButton">Logout</button>
-        </form>
-    </div>
-</div>
