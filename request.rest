@@ -90,3 +90,5 @@ content-type: application/json
     "name": "week 1"
 }
 ###
+
+GET https://student-schedule-manager.herokuapp.com/ HTTP/1.1
