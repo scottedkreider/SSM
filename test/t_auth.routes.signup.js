@@ -68,7 +68,7 @@ QUnit.test('(2) Fail to create an account due to duplicate email', assert => {
     );
 })
 
-
+ 
 QUnit.test('(3) Successfully register an account with a unique username and email', assert => {
     const done = assert.async();
 
