@@ -24,8 +24,6 @@ exports.saveWeeklyTaskListData = (req, res) => {
 }
 
 exports.getWeeklyTaskListData = (req, res) => {
-    console.log("retrieving");
-    console.log(req.headers.authorization);
     WeeklyTaskList.findOne({
       username: req.headers.authorization
     })

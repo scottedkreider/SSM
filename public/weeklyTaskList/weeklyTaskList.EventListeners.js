@@ -7,44 +7,10 @@ import {
     , deleteTaskFromTaskCategory
 } from "./weeklyTaskList.Model.js";
 
-///////////////////////////////////////
-// Event Listeners
+import {
+    sendWTLToDatabase
+} from "./weeklyTaskList.apiCalls.js";
 
-// export async function connectLoadTaskListFromDBListener(){
-//     window.addEventListener("load",async () => {
-//         // On click
-//         //      Add new row with places to fill in the new info for the task category at the bottom of the category list (but before MISC)
-//         getWTLFromDatabase()
-//         .then((res) => {
-//             if(res.statusCode === 200){
-//                 localStorage.setItem("_weeklyTaskList",JSON.stringify(res.payload.wtl));
-//             } else if (res.statusCode === 401) {
-//                 localStorage.removeItem("_weeklyTaskList");
-//             } else {
-//                 console.log("load WTL error")
-//             }
-//         })
-//     });
-// }
-
-// export default async function getWTLFromDatabase(){
-//     var res;
-//     await fetch('/api/weeklyTaskList', {
-//         method: "GET",
-//         headers: {
-//             'Authorization': `${JSON.parse(localStorage.getItem("auth")).username}`,
-//             'x-access-token': `${JSON.parse(localStorage.getItem("auth")).accessToken}`
-//         }
-//     })
-//         .then(async (response) => {
-//             res = {
-//                 statusCode: response.status,
-//                 payload: await response.json()
-//             }
-//         }
-//         )
-//     return res;
-// }
 
 function connectSaveTaskListToDBListener(divToRefresh) {
     document.getElementById("saveTaskListToDBButton").addEventListener("click", () => {
@@ -58,25 +24,6 @@ function connectSaveTaskListToDBListener(divToRefresh) {
     });
 }
 
-
-export async function sendWTLToDatabase() {
-    await fetch('/api/weeklyTaskList', {
-        method: "POST",
-        headers: {
-            'Authorization': `${JSON.parse(localStorage.getItem("auth")).username}`,
-            'x-access-token': `${JSON.parse(localStorage.getItem("auth")).accessToken}`,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            _wtl: localStorage.getItem("_weeklyTaskList")
-        })
-    })
-        .then(async (response) => {
-            console.log(response);
-        }
-        )
-}
-
 function connectAddNewTaskCategoryListener(divToRefresh) {
     document.getElementById("addTaskCategoryButton").addEventListener("click", () => {
         // On click
@@ -86,7 +33,6 @@ function connectAddNewTaskCategoryListener(divToRefresh) {
         displayWeeklyTaskListDiv(divToRefresh);
     });
 }
-
 
 function connectDeleteTaskCategoryListener(divToRefresh) {
     const deleteTaskCategoryButtons = document.querySelectorAll(".deleteTaskCategory");
@@ -163,8 +109,6 @@ function connectAddNewTaskToTaskCategoryListener(divToRefresh) {
 
 
 function connectEditTaskInTaskCategoryListener(divToRefresh) {
-
-
     const editTaskCategoryButtons = document.querySelectorAll(".editTask");
     editTaskCategoryButtons.forEach((button) => {
         button.addEventListener("click", () => {

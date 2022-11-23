@@ -2,8 +2,6 @@ const db = require("../models");
 const MultiMonthCalendar = db.multiMonthCalendar;
 
 exports.retrieveMMCData = (req, res) => {
-    console.log("retrieving");
-    console.log(req.headers.authorization);
     MultiMonthCalendar.findOne({
       username: req.headers.authorization
     })
@@ -50,8 +48,6 @@ exports.saveMMCData = (req, res) => {
 }
 
 exports.deleteMMCData = (req, res) => {
-    console.log("deleting");
-    console.log(req.headers.authorization);
     MultiMonthCalendar.findOneAndDelete({
       username: req.headers.authorization
     })

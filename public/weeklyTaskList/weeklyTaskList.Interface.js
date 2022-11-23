@@ -30,7 +30,6 @@ export function weeklyTaskListBodyDiv(){
         
     if(!localStorage.getItem("_weeklyTaskList")){
         initializeTaskList();
-        console.log("not here")
     }
 
     // Get weeklyTaskList from localStorage

@@ -12,13 +12,13 @@ module.exports = function(app) {
 
     // Root route
     app.get('/',(req, res) => {
-        console.log('dashboard');
+        // console.log('dashboard');
         res.render(path.join("pages/login"));
     })
 
     // Create Account route
     app.get('/createAccount',(req, res) => {
-        console.log('createAccount');
+        // console.log('createAccount');
         res.render(path.join("pages/createAccount"));
     })
 
@@ -26,7 +26,7 @@ module.exports = function(app) {
     // Verify access
     app.get('/dashboard',
         (req, res) => {
-            console.log('dashboard');
+            // console.log('dashboard');
             res.render(path.join("pages/dashboard"));
     })
 
@@ -34,7 +34,7 @@ module.exports = function(app) {
     // Verify access
     app.get('/weeklyTaskList',
         (req, res) => {
-            console.log('weeklyTaskList');
+            // console.log('weeklyTaskList');
             res.render(path.join("pages/weeklyTaskList"));
     })
 
@@ -42,7 +42,7 @@ module.exports = function(app) {
     // Verify access
     app.get('/weeklyCalendar',
         (req, res) => {
-            console.log('weeklyCalendar');
+            // console.log('weeklyCalendar');
             res.render(path.join("pages/weeklyCalendar"));
     })
 
@@ -50,7 +50,7 @@ module.exports = function(app) {
     // Verify access
     app.get('/multiMonthCalendar',
         (req, res) => {
-            console.log('multiMonthCalendar');
+            // console.log('multiMonthCalendar');
             res.render(path.join("pages/multiMonthCalendar"));
     })
   };

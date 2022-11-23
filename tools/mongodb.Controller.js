@@ -14,7 +14,7 @@ exports.deleteUser = (username, res) => {
           console.error("TEST: Add User error", err);
           return;
         }
-        console.log(`user ${username} successfully deleted`);
+        // console.log(`user ${username} successfully deleted`);
         closeDbConnection();
       });
 }
@@ -30,10 +30,10 @@ exports.addUser = (accountInfo, res) => {
     
       user.save((err, user) => {
         if (err) {
-            console.error("TEST: Add User error", err);
+            // console.error("TEST: Add User error", err);
           return;
         }
-        console.log(`user ${accountInfo.username} successfully added`);
+        // console.log(`user ${accountInfo.username} successfully added`);
         closeDbConnection();
       });
 }
@@ -42,10 +42,10 @@ initializeDbConnection = () => {
     db.mongoose
     .connect("mongodb+srv://scottedkreider:MongoAdmin1234@cluster0.xfkqs.mongodb.net/?retryWrites=true&w=majority")
     .then(() => {
-        console.log("TEST: Successfully connected to MongoDB");
+        // console.log("TEST: Successfully connected to MongoDB");
     })
     .catch(err => {
-        console.error("TEST: Connection error", err);
+        // console.error("TEST: Connection error", err);
         process.exit();
     });
 }

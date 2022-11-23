@@ -1,30 +1,35 @@
 // Tests:
-// 	- (success) Submit a unique username and password
-// 		○ (pre) Username or email does not exist
-// 		○ Check that the response = 200
 // 	- (failure: duplicate username) Submit an already existing username
 // 		○ (pre) Account with the username already exists
 // 		○ Submit a duplicate username
 // 		○ Check that the response = 401
+//
 // 	- (failure: duplicate email) Submit an already existing email
 // 		○ (pre) Account with the email already exists
 // 		○ Submit a duplicate email
 // 		○ Check that the response = 402
+//
+// 	- (success) Submit a unique username and password
+// 		○ (pre) Username or email does not exist
+// 		○ Check that the response = 200
 
 
 // import fetch from "node-fetch";
 const fetch = require("node-fetch");
 
-const tools = require("../tools/mongodb.Controller");
+const tools = require("../../tools/mongodb.Controller.js");
 
 
-QUnit.module('(AUTH API) Sign-up', {
+QUnit.module('(AUTH_API) Sign-up', {
     before: function() {
         console.log("before")
     }
 });
 
-
+// 	- (failure: duplicate username) Submit an already existing username
+// 		○ (pre) Account with the username already exists
+// 		○ Submit a duplicate username
+// 		○ Check that the response = 401
 QUnit.test('(1) Fail to create an account due to duplicate username', assert => {
     const done = assert.async();
 
@@ -47,6 +52,10 @@ QUnit.test('(1) Fail to create an account due to duplicate username', assert => 
 })
 
 
+// 	- (failure: duplicate email) Submit an already existing email
+// 		○ (pre) Account with the email already exists
+// 		○ Submit a duplicate email
+// 		○ Check that the response = 402
 QUnit.test('(2) Fail to create an account due to duplicate email', assert => {
     const done = assert.async();
 
@@ -69,6 +78,9 @@ QUnit.test('(2) Fail to create an account due to duplicate email', assert => {
 })
 
  
+// 	- (success) Submit a unique username and password
+// 		○ (pre) Username or email does not exist
+// 		○ Check that the response = 200
 QUnit.test('(3) Successfully register an account with a unique username and email', assert => {
     const done = assert.async();
 
@@ -94,7 +106,3 @@ QUnit.test('(3) Successfully register an account with a unique username and emai
 
     tools.deleteUser(`${id}`);
 })
-
-
-
-// QUnit.module('(AUTH API) Sign-in');

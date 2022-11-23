@@ -1,14 +1,11 @@
 "use strict";
 
-import {getMMCFromDatabase} from "../multiMonthCalendar/multiMonthCalendar.apiCalls.js";
-
 const dashboardDiv = document.getElementById("dashboardDiv");
 
 dashboardDiv.innerHTML = "dashboard";
 
 loadMMCOnPageLoad()
 connectLoadTaskListFromDBListener();
-
 
 
 async function loadMMCOnPageLoad(){
@@ -20,7 +17,7 @@ async function loadMMCOnPageLoad(){
                 } else if (res.statusCode === 401) {
                     localStorage.removeItem("_multiMonthCalendar");
                 } else {
-                    console.log("load MMC error")
+                    // console.log("load MMC error")
                 }
             })
     });
@@ -40,7 +37,7 @@ async function connectLoadTaskListFromDBListener(){
             } else if (res.statusCode === 401) {
                 localStorage.removeItem("_weeklyTaskList");
             } else {
-                console.log("load WTL error")
+                // console.log("load WTL error")
             }
         })
     });
@@ -49,6 +46,27 @@ async function connectLoadTaskListFromDBListener(){
 async function getWTLFromDatabase(){
     var res;
     await fetch('/api/weeklyTaskList', {
+        method: "GET",
+        headers: {
+            'Authorization': `${JSON.parse(localStorage.getItem("auth")).username}`,
+            'x-access-token': `${JSON.parse(localStorage.getItem("auth")).accessToken}`
+        }
+    })
+        .then(async (response) => {
+            res = {
+                statusCode: response.status,
+                payload: await response.json()
+            }
+        }
+        )
+    return res;
+}
+
+
+
+async function getMMCFromDatabase(){
+    var res;
+    await fetch('/api/multiMonthCalendar', {
         method: "GET",
         headers: {
             'Authorization': `${JSON.parse(localStorage.getItem("auth")).username}`,

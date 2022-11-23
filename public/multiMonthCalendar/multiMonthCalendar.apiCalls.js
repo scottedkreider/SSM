@@ -10,7 +10,7 @@ export async function deleteMMCFromDatabase(){
         }
     })
         .then(async (response) => {
-            console.log(response);
+            // console.log(response);
         }
         )
 }
@@ -28,26 +28,7 @@ export async function sendMMCToDatabase(){
         })
     })
         .then(async (response) => {
-            console.log(response);
+            // console.log(response);
         }
         )
-}
-
-export async function getMMCFromDatabase(){
-    var res;
-    await fetch('/api/multiMonthCalendar', {
-        method: "GET",
-        headers: {
-            'Authorization': `${JSON.parse(localStorage.getItem("auth")).username}`,
-            'x-access-token': `${JSON.parse(localStorage.getItem("auth")).accessToken}`
-        }
-    })
-        .then(async (response) => {
-            res = {
-                statusCode: response.status,
-                payload: await response.json()
-            }
-        }
-        )
-    return res;
 }

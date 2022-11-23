@@ -11,7 +11,6 @@ export function submitDatesListener(){
     let _mmc_mgr;
 
     _submitButton.addEventListener("click",() => {
-        // console.log("weSubmitting");
         const _startDate = document.getElementById("mmcDateEntryStartDate");
         const _endDate = document.getElementById("mmcDateEntryEndDate");
         const _mmcTitle = document.getElementById("mmcDateEntryTitle");
@@ -34,7 +33,6 @@ export function checkOffDaysListener(_mmc){
         checkbox.addEventListener('change',() => {
             var cBoxId = checkbox.id.replace("cbox_","");
             if(checkbox.checked){
-                // console.log(cBoxId);
 
                 var day = _mmc.ListOfDays[cBoxId];
                 var _d = new Date(day.FullYear, day.Month12 - 1, day.DayOfTheMonth);
@@ -42,7 +40,6 @@ export function checkOffDaysListener(_mmc){
                     day.Completed = true;
                     localStorage.setItem("_multiMonthCalendar",JSON.stringify(_mmc));
                     checkbox.parentElement.innerHTML = "complete";
-                    // console.log("checked");
                 } else {
                     checkbox.checked = false;
                 }
@@ -54,7 +51,6 @@ export function checkOffDaysListener(_mmc){
 export function deleteMMCListener(){
     const _deleteButton = document.getElementById("_deleteMMCButton");
     _deleteButton.addEventListener("click",() => {
-        // console.log("weDeleting");
         if(confirm("are you sure?")){
             localStorage.removeItem("_multiMonthCalendar");
             deleteMMCFromDatabase();
@@ -68,7 +64,6 @@ export function checkAllDaysListener(_mmc){
     var yesterday = new Date(new Date().getTime() - (24 * 60 * 60 * 1000));
     const _checkAllDaysButton = document.getElementById("_checkAllDaysButton");
     _checkAllDaysButton.addEventListener("click",() => {
-        // console.log("weBeChecking")
         _mmc.ListOfDays.forEach((day) => {
             var _d = new Date(day.FullYear, day.Month12 - 1, day.DayOfTheMonth);
             if(_d < yesterday){
@@ -76,7 +71,6 @@ export function checkAllDaysListener(_mmc){
             }
         });
 
-        // console.log(_mmc);
         localStorage.setItem("_multiMonthCalendar",JSON.stringify(_mmc));
 
         displayMultiMonthCalendar();
@@ -134,7 +128,6 @@ export function saveMMCListener(_mmc){
     const _deleteButton = document.getElementById("_saveCalendarToDBButton");
     _deleteButton.addEventListener("click",() => {
         if(confirm("are you sure?")){
-            console.log("here")
             sendMMCToDatabase();
         }
     })
