@@ -1,4 +1,7 @@
 "use strict";
+
+import {getMMCFromDatabase} from "../multiMonthCalendar/multiMonthCalendar.apiCalls.js";
+
 const dashboardDiv = document.getElementById("dashboardDiv");
 
 dashboardDiv.innerHTML = "dashboard";
@@ -21,26 +24,6 @@ async function loadMMCOnPageLoad(){
                 }
             })
     });
-}
-
-
-async function getMMCFromDatabase(){
-    var res;
-    await fetch('/api/multiMonthCalendar', {
-        method: "GET",
-        headers: {
-            'Authorization': `${JSON.parse(localStorage.getItem("auth")).username}`,
-            'x-access-token': `${JSON.parse(localStorage.getItem("auth")).accessToken}`
-        }
-    })
-        .then(async (response) => {
-            res = {
-                statusCode: response.status,
-                payload: await response.json()
-            }
-        }
-        )
-    return res;
 }
 
 

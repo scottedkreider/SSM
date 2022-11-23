@@ -2,6 +2,8 @@
 
 import MultiMonthCalendarManager from "./multiMonthCalendar.Model.js";
 import displayMultiMonthCalendar from "./multiMonthCalendar.DisplayManager.js";
+import {sendMMCToDatabase, deleteMMCFromDatabase} from "./multiMonthCalendar.apiCalls.js";
+
 
 export function submitDatesListener(){
     const _submitButton = document.getElementById("mmcDateEntrySubmit_button");
@@ -101,7 +103,6 @@ export function editDailyInfoListener(_mmc){
 }
 
 
-
 export function saveDailyInfoListener(_mmc){
 
     const _saveDailyInfoButton = document.getElementById("_saveDailyInfoButton");
@@ -128,23 +129,6 @@ export function saveDailyInfoListener(_mmc){
     });   
 }
 
-export async function sendMMCToDatabase(){
-    await fetch('/api/multiMonthCalendar', {
-        method: "POST",
-        headers: {
-            'Authorization': `${JSON.parse(localStorage.getItem("auth")).username}`,
-            'x-access-token': `${JSON.parse(localStorage.getItem("auth")).accessToken}`,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            _mgr: localStorage.getItem("_multiMonthCalendar")
-        })
-    })
-        .then(async (response) => {
-            console.log(response);
-        }
-        )
-}
 
 export function saveMMCListener(_mmc){
     const _deleteButton = document.getElementById("_saveCalendarToDBButton");
@@ -155,40 +139,4 @@ export function saveMMCListener(_mmc){
         }
     })
 
-}
-
-
-// export default async function getMMCFromDatabase(){
-//     var res;
-//     await fetch('/api/multiMonthCalendar', {
-//         method: "GET",
-//         headers: {
-//             'Authorization': `${JSON.parse(localStorage.getItem("auth")).username}`,
-//             'x-access-token': `${JSON.parse(localStorage.getItem("auth")).accessToken}`
-//         }
-//     })
-//         .then(async (response) => {
-//             res = {
-//                 statusCode: response.status,
-//                 payload: await response.json()
-//             }
-//         }
-//         )
-//     return res;
-// }
-
-
-export async function deleteMMCFromDatabase(){
-    await fetch('/api/multiMonthCalendar', {
-        method: "DELETE",
-        headers: {
-            'Authorization': `${JSON.parse(localStorage.getItem("auth")).username}`,
-            'x-access-token': `${JSON.parse(localStorage.getItem("auth")).accessToken}`,
-            'Content-Type': 'application/json'
-        }
-    })
-        .then(async (response) => {
-            console.log(response);
-        }
-        )
 }
