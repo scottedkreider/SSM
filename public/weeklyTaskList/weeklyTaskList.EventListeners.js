@@ -120,11 +120,7 @@ function connectEditTaskInTaskCategoryListener(divToRefresh) {
             //      Refresh current div
 
             const taskId = button.id.split("_")[1];
-            const categoryId = button.parentElement.parentElement.id.split("_")[1];
-            var all = document.querySelectorAll(`#c_${categoryId}_t_${taskId} input`);
-            all.forEach((element) => {
-                element.disabled = !element.disabled;
-            })
+            const categoryId = button.parentElement.parentElement.parentElement.parentElement.id.split("_")[1];
 
             if (button.innerText == "Edit") {
                 button.innerText = "Save"
@@ -135,11 +131,20 @@ function connectEditTaskInTaskCategoryListener(divToRefresh) {
             const weeklyTaskList = JSON.parse(localStorage.getItem("_weeklyTaskList"));
             const categoryRow = weeklyTaskList.categoryList.find(category => category.id == categoryId);
             const taskRow = categoryRow.tasks.find(task => task.id == taskId);
-            taskRow.duedate = document.querySelector(`#duedate_c${categoryId}_t${taskId}`).value;
-            taskRow.name = document.querySelector(`#taskname_c${categoryId}_t${taskId}`).value;
-            taskRow.worktime[0] = document.querySelector(`#worktime_c${categoryId}_t${taskId}`).value;
-            taskRow.workstarttime = document.querySelector(`#workstarttime_c${categoryId}_t${taskId}`).value;
-            taskRow.workduration = document.querySelector(`#workduration_c${categoryId}_t${taskId}`).value;
+
+            const displayRows = Array.from(document.getElementById(`taskToDisplayDiv_${categoryId}_${taskId}`).firstElementChild.children);
+
+            displayRows.forEach((childElement) => {
+                childElement.firstElementChild.disabled = !childElement.firstElementChild.disabled;
+            })
+
+            button.disabled = !button.disabled;
+
+            taskRow.duedate = document.getElementById(`duedate_${categoryId}_${taskId}`).value;
+            taskRow.name = document.getElementById(`taskname_${categoryId}_${taskId}`).value;
+            taskRow.worktime[0] = document.getElementById(`worktime_${categoryId}_${taskId}`).value;
+            taskRow.workstarttime = document.getElementById(`workstarttime_${categoryId}_${taskId}`).value;
+            taskRow.workduration = document.getElementById(`workduration_${categoryId}_${taskId}`).value;
             localStorage.setItem("_weeklyTaskList",JSON.stringify(weeklyTaskList));
 
             // displayWeeklyTaskListDiv(divToRefresh);
