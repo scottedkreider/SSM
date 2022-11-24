@@ -177,8 +177,8 @@ function connectCheckBoxListener(divToRefresh) {
             //  On click
             //      Toggle checkbox and update appearance accordingly
             //
-            const categoryId = checkbox.parentElement.id.split("_")[1];
-            const taskId = checkbox.id.split("_")[1];
+            const categoryId = checkbox.parentElement.parentElement.parentElement.parentElement.id.split("_")[1];
+            const taskId = checkbox.parentElement.parentElement.id.split("_")[1];
 
             const weeklyTaskList = JSON.parse(localStorage.getItem("_weeklyTaskList"));
             const categoryRow = weeklyTaskList.categoryList.find(category => category.id == categoryId);

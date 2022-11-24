@@ -22,6 +22,27 @@ input:disabled {
     border-style: solid;
 }
 
+.weeklyTaskListBodyDiv {
+    background-color: lightblue;
+    border-radius: 20px;
+}
+
+#weeklyTaskListBodyDiv {
+    background: lightblue;
+    border-radius: 20px;
+    z-index: 1;
+    padding-top: 10px;
+    padding-bottom: 20px; 
+    box-shadow: 10px 10px 10px;
+}
+
+.weeklyTaskListBodyDisplayDiv {
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+
 
 
 h1 {
@@ -38,12 +59,28 @@ h1 {
 
 .taskCategory {
     background: lightblue;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .taskItem {
     background: lightyellow;
+    overflow-wrap: normal; 
 }
 
 .done {
     background: pink;
+}
+
+
+.box {
+    display: flex;
+}
+
+.doneDiv {
+    flex: 1 1 auto;
 }

@@ -33,16 +33,19 @@ export default class MultiMonthCalendarDisplay {
             <h2>Title: ${this._mmc.Title}</h2>
             <p>Dates: ${this._mmc.StartDate} to ${this._mmc.EndDate}</p>
             `;
-        this.multiMonthCalendarDiv.appendChild(deleteMMCDiv());
+
+        const mmcButtonsDiv = document.createElement("div");
+        mmcButtonsDiv.classList += "container";
+        mmcButtonsDiv.appendChild(deleteMMCDiv())
+        mmcButtonsDiv.appendChild(checkAllDaysDiv())
+        mmcButtonsDiv.appendChild(editDailyInfoDiv())
+        mmcButtonsDiv.appendChild(saveCalendarToDBDiv())
+
+
+        this.multiMonthCalendarDiv.appendChild(mmcButtonsDiv);
         deleteMMCListener();
-
-        this.multiMonthCalendarDiv.appendChild(checkAllDaysDiv());
         checkAllDaysListener(this._mmc);
-
-        this.multiMonthCalendarDiv.appendChild(editDailyInfoDiv());
         editDailyInfoListener(this._mmc);
-
-        this.multiMonthCalendarDiv.appendChild(saveCalendarToDBDiv());
         saveMMCListener(this._mmc);
     }
 

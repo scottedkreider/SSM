@@ -25,42 +25,32 @@ export function saveTaskListToDBButton(){
 
 
 export function editCategoryButton(categoryId){
-    const editCategoryButtonDiv = document.createElement("div");
     const editCategoryButton = document.createElement("button");
     editCategoryButton.classList += "editTaskCategory";
     editCategoryButton.id = `editCategory_${categoryId}`;
     editCategoryButton.innerText = "Edit Category";
 
-    editCategoryButtonDiv.appendChild(editCategoryButton);
-
-    return editCategoryButtonDiv;
+    return editCategoryButton;
 }
 
 
 export function deleteCategoryButton(categoryId){
-    const deleteCategoryButtonDiv = document.createElement("div");
     const deleteCategoryButton = document.createElement("button");
     deleteCategoryButton.classList += "deleteTaskCategory";
     deleteCategoryButton.id = `deleteCategory_${categoryId}`;
     deleteCategoryButton.innerText = "Delete Category";
 
-    deleteCategoryButtonDiv.appendChild(deleteCategoryButton);
-
-    return deleteCategoryButtonDiv;
+    return deleteCategoryButton;
 }
 
 
 export function addTaskButton(categoryId){
-    const addTaskButtonDiv = document.createElement("div");
-
     const addTaskButton = document.createElement("button");
     addTaskButton.classList += "addTask";
     addTaskButton.id = `addTask_${categoryId}`;
     addTaskButton.innerText = "Add New Task";
 
-    addTaskButtonDiv.appendChild(addTaskButton);
-
-    return addTaskButtonDiv;
+    return addTaskButton;
 }
 
 
@@ -68,13 +58,8 @@ export function addTaskButton(categoryId){
 export function taskToDisplayDiv(categoryId, taskToDisplay){
     // Div to return to the attach to parent div
     const taskToDisplayDiv = document.createElement("div");
-    taskToDisplayDiv.id = "taskToDisplayDiv";
-
-    // Task Name
-    const taskDisplay = document.createElement("div");
-    taskDisplay.appendChild(taskDisplayRow(categoryId, taskToDisplay));
-    taskToDisplayDiv.appendChild(taskDisplay);
-
+    taskToDisplayDiv.id = `taskToDisplayDiv_${categoryId}`;
+    taskToDisplayDiv.appendChild(taskDisplayRow(categoryId, taskToDisplay));
     return taskToDisplayDiv;
 }
 
@@ -82,10 +67,11 @@ export function taskToDisplayDiv(categoryId, taskToDisplay){
 
 function taskDisplayRow(categoryId, taskToDisplay){
     const rowToDisplay = document.createElement("div");
-    rowToDisplay.id = `c_${categoryId}_t_${taskToDisplay.id}`;
-    rowToDisplay.classList += "container row taskItem";
+    rowToDisplay.id = `t_${taskToDisplay.id}`;
+    rowToDisplay.classList += "container row taskItem box";
 
     const doneDataDiv = document.createElement("div");
+    doneDataDiv.classList += "doneDiv";
     const doneData = document.createElement("input");
     doneData.classList += "doneCheckBox";
     doneData.id = `doneData_${taskToDisplay.id}`;
@@ -94,46 +80,52 @@ function taskDisplayRow(categoryId, taskToDisplay){
     doneDataDiv.appendChild(doneData);
 
     const nameDataDiv = document.createElement("div");
+    nameDataDiv.classList += "doneDiv";
     const nameData = document.createElement("input");
-    nameData.id = `taskname_c${categoryId}_t${taskToDisplay.id}`;
+    nameData.id = `taskname_${taskToDisplay.id}`;
     nameData.type = "input";
     nameData.disabled = "true";
     nameData.value = `${taskToDisplay.name}`
     nameDataDiv.appendChild(nameData)
 
     const workTimeDataDiv = document.createElement("div");
+    workTimeDataDiv.classList += "doneDiv";
     const workTimeData = document.createElement("input");
-    workTimeData.id = `worktime_c${categoryId}_t${taskToDisplay.id}`;
+    workTimeData.id = `worktime_${taskToDisplay.id}`;
     workTimeData.type = "date";
     workTimeData.disabled = "true";
     workTimeData.value = `${taskToDisplay.worktime}`
     workTimeDataDiv.appendChild(workTimeData)
 
     const workStartTimeDataDiv = document.createElement("div");
+    workStartTimeDataDiv.classList += "doneDiv";
     const workStartTimeData = document.createElement("input");
-    workStartTimeData.id = `workstarttime_c${categoryId}_t${taskToDisplay.id}`;
+    workStartTimeData.id = `workstarttime_${taskToDisplay.id}`;
     workStartTimeData.type = "time";
     workStartTimeData.disabled = "true";
     workStartTimeData.value = `${taskToDisplay.workstarttime}`
     workStartTimeDataDiv.appendChild(workStartTimeData)
 
     const workDurationDataDiv = document.createElement("div");
+    workDurationDataDiv.classList += "doneDiv";
     const workDurationData = document.createElement("input");
-    workDurationData.id = `workduration_c${categoryId}_t${taskToDisplay.id}`;
+    workDurationData.id = `workduration_${taskToDisplay.id}`;
     workDurationData.type = "number";
     workDurationData.disabled = "true";
     workDurationData.value = `${taskToDisplay.workduration}`
     workDurationDataDiv.appendChild(workDurationData)
 
     const dueDateDataDiv = document.createElement("div");
+    dueDateDataDiv.classList += "doneDiv";
     const dueDateData = document.createElement("input");
-    dueDateData.id = `duedate_c${categoryId}_t${taskToDisplay.id}`;
+    dueDateData.id = `duedate_${taskToDisplay.id}`;
     dueDateData.type = "date";
     dueDateData.disabled = "true";
     dueDateData.value = `${taskToDisplay.duedate}`
     dueDateDataDiv.appendChild(dueDateData)
 
     const editTaskButtonDiv = document.createElement("div");
+    editTaskButtonDiv.classList += "doneDiv";
     const editTaskButton = document.createElement("button");
     editTaskButton.classList += "editTask";
     editTaskButton.id = `editTask_${taskToDisplay.id}`;
@@ -141,6 +133,7 @@ function taskDisplayRow(categoryId, taskToDisplay){
     editTaskButtonDiv.appendChild(editTaskButton)
 
     const deleteTaskButtonDiv = document.createElement("div");
+    deleteTaskButtonDiv.classList += "doneDiv";
     deleteTaskButtonDiv.id = `deleteTask_${categoryId}`;
     const deleteTaskButton = document.createElement("button");
     deleteTaskButton.classList += "deleteTask";

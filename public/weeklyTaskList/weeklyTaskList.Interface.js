@@ -9,6 +9,7 @@ import {
 // WTL Header
 export function weeklyTaskListHeaderDiv(){
     const weeklyTaskListHeaderDiv = document.createElement("div");
+    // weeklyTaskListHeaderDiv.id = "weeklyTaskListHeaderDiv";
 
     const taskListHeader_h1 = document.createElement("h1");
     taskListHeader_h1.innerText = "Weekly Task List"
@@ -37,8 +38,8 @@ export function weeklyTaskListBodyDiv(){
 
     // WTL Category List
     const weeklyTaskListBodyDisplayDiv = document.createElement("div");
-    weeklyTaskListBodyDisplayDiv.id = "weeklyTaskListBodyDisplayDiv";
     weeklyTaskListBodyDisplayDiv.classList += "container column";
+    weeklyTaskListBodyDisplayDiv.id = "weeklyTaskListBodyDisplayDiv";
 
     weeklyTaskList.categoryList.forEach((category) => {
         weeklyTaskListBodyDisplayDiv.appendChild(displayTaskCategory(category));
@@ -111,9 +112,12 @@ function displayTaskCategory(categoryToDisplay){
     categoryHeader.id = `catHeader_${categoryToDisplay.id}`;
     categoryToDisplayDiv.appendChild(categoryHeader);
 
-    categoryToDisplayDiv.appendChild(editCategoryButton(categoryToDisplay.id));
-    categoryToDisplayDiv.appendChild(deleteCategoryButton(categoryToDisplay.id));
-    categoryToDisplayDiv.appendChild(addTaskButton(categoryToDisplay.id));
+    const categoryHeaderButtons = document.createElement("div");
+    categoryHeaderButtons.appendChild(editCategoryButton(categoryToDisplay.id));
+    categoryHeaderButtons.appendChild(deleteCategoryButton(categoryToDisplay.id));
+    categoryHeaderButtons.appendChild(addTaskButton(categoryToDisplay.id));
+
+    categoryToDisplayDiv.appendChild(categoryHeaderButtons);
 
     categoryToDisplay.tasks.forEach((task) => {
         categoryToDisplayDiv.appendChild(taskToDisplayDiv(categoryToDisplay.id,task));

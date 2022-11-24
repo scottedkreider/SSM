@@ -11,11 +11,6 @@ input:disabled {
     border-style: solid;
 }
 
-.taskDiv {
-    background-color: lightgreen;
-    text-indent: 50px;
-    border-style: dotted;
-}
 
 .multiMonthCalendarDisplay {
     background-color: whitesmoke;
