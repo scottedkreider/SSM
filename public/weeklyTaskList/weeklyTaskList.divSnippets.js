@@ -2,8 +2,9 @@ export function addTaskCategoryButton(){
     const addTaskCategoryButtonDiv = document.createElement("div");
 
     const addTaskCategoryButton = document.createElement("button");
+    addTaskCategoryButton.classList += "entryButton";    
     addTaskCategoryButton.id = "addTaskCategoryButton";
-    addTaskCategoryButton.innerText = "Add New Task Category";
+    addTaskCategoryButton.innerText = "Add Category";
 
     addTaskCategoryButtonDiv.appendChild(addTaskCategoryButton);
 
@@ -15,8 +16,9 @@ export function saveTaskListToDBButton(){
     const saveTaskListToDBButtonDiv = document.createElement("div");
 
     const saveTaskListToDBButton = document.createElement("button");
+    saveTaskListToDBButton.classList += "entryButton";    
     saveTaskListToDBButton.id = "saveTaskListToDBButton";
-    saveTaskListToDBButton.innerText = "Save Task List to DB";
+    saveTaskListToDBButton.innerText = "Save List to DB";
 
     saveTaskListToDBButtonDiv.appendChild(saveTaskListToDBButton);
 
@@ -26,9 +28,9 @@ export function saveTaskListToDBButton(){
 
 export function editCategoryButton(categoryId){
     const editCategoryButton = document.createElement("button");
-    editCategoryButton.classList += "editTaskCategory";
+    editCategoryButton.classList += "editTaskCategory wtlButton";
     editCategoryButton.id = `editCategory_${categoryId}`;
-    editCategoryButton.innerText = "Edit Category";
+    editCategoryButton.innerText = "Edit";
 
     return editCategoryButton;
 }
@@ -36,9 +38,9 @@ export function editCategoryButton(categoryId){
 
 export function deleteCategoryButton(categoryId){
     const deleteCategoryButton = document.createElement("button");
-    deleteCategoryButton.classList += "deleteTaskCategory";
+    deleteCategoryButton.classList += "deleteTaskCategory wtlButton deleteButton";
     deleteCategoryButton.id = `deleteCategory_${categoryId}`;
-    deleteCategoryButton.innerText = "Delete Category";
+    deleteCategoryButton.innerText = "Delete";
 
     return deleteCategoryButton;
 }
@@ -46,9 +48,9 @@ export function deleteCategoryButton(categoryId){
 
 export function addTaskButton(categoryId){
     const addTaskButton = document.createElement("button");
-    addTaskButton.classList += "addTask";
+    addTaskButton.classList += "addTask wtlButton";
     addTaskButton.id = `addTask_${categoryId}`;
-    addTaskButton.innerText = "Add New Task";
+    addTaskButton.innerText = "Add Task";
 
     return addTaskButton;
 }
@@ -130,7 +132,7 @@ function taskDisplayRow(categoryId, taskToDisplay){
     const editTaskButtonDiv = document.createElement("div");
     editTaskButtonDiv.classList += "doneDiv";
     const editTaskButton = document.createElement("button");
-    editTaskButton.classList += "editTask";
+    editTaskButton.classList += "editTask wtlButton";
     editTaskButton.id = `editTask_${taskToDisplay.id}`;
     editTaskButton.innerText = "Edit";
     editTaskButtonDiv.appendChild(editTaskButton)
@@ -139,7 +141,7 @@ function taskDisplayRow(categoryId, taskToDisplay){
     deleteTaskButtonDiv.classList += "doneDiv";
     deleteTaskButtonDiv.id = `deleteTask_${categoryId}`;
     const deleteTaskButton = document.createElement("button");
-    deleteTaskButton.classList += "deleteTask";
+    deleteTaskButton.classList += "deleteTask wtlButton deleteButton";
     deleteTaskButton.id = `deleteTask_${taskToDisplay.id}`;
     deleteTaskButton.innerText = "Delete";
     deleteTaskButtonDiv.appendChild(deleteTaskButton)

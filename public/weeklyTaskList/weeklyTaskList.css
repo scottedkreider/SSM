@@ -43,6 +43,9 @@ input:disabled {
 }
 
 
+.categoryHeader {
+    color: red;
+}
 
 
 h1 {
@@ -84,3 +87,23 @@ h1 {
 .doneDiv {
     flex: 1 1 auto;
 }
+
+.wtlButton {
+    font-size: 0.7vw;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    border-color: lightskyblue;
+    text-align: center;
+    font-weight: bold;
+    width: 5vw;
+    height: 4vh;
+    z-index: 6;
+}
+
+.wtlButton.deleteButton:hover {
+    background-color: lightpink;
+}
+.wtlButton:hover {
+    background-color: lightgreen;
+}
+

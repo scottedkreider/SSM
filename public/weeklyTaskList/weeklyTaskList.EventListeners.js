@@ -72,10 +72,10 @@ function connectEditTaskCategoryListener(divToRefresh) {
 
             const catHeader = document.getElementById(`catHeader_${categoryId}`);
             if (catHeader.disabled) {
-                button.innerText = "Save Category"
+                button.innerText = "Save"
                 catHeader.removeAttribute("disabled");
             } else {
-                button.innerText = "Edit Category"
+                button.innerText = "Edit"
                 catHeader.setAttribute("disabled", "true")
 
                 const weeklyTaskList = JSON.parse(localStorage.getItem("_weeklyTaskList"));

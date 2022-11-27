@@ -162,7 +162,7 @@ export function checkAllDaysDiv(){
     var _checkAllDaysButton = document.createElement("button");
     _checkAllDaysButton.setAttribute("id","_checkAllDaysButton");
     _checkAllDaysButton.setAttribute("class","entryButton");
-    _checkAllDaysButton.innerHTML = "Check Off All Days";
+    _checkAllDaysButton.innerHTML = "Check All Days";
     checkAllDaysDiv.appendChild(_checkAllDaysButton);
 
     return checkAllDaysDiv;
@@ -173,7 +173,7 @@ export function editDailyInfoDiv(){
     var _editDailyInfoButton = document.createElement("button");
     _editDailyInfoButton.setAttribute("id","_editDailyInfoButton");
     _editDailyInfoButton.setAttribute("class","entryButton");    
-    _editDailyInfoButton.innerHTML = "Edit Daily Information";
+    _editDailyInfoButton.innerHTML = "Edit Daily Info";
     editDailyInfoDiv.appendChild(_editDailyInfoButton);
 
     return editDailyInfoDiv;
@@ -185,7 +185,7 @@ export function saveCalendarToDBDiv(){
     var _saveCalendarToDBButton = document.createElement("button");
     _saveCalendarToDBButton.setAttribute("id","_saveCalendarToDBButton");
     _saveCalendarToDBButton.setAttribute("class","entryButton");    
-    _saveCalendarToDBButton.innerHTML = "Save Calendar to DB";
+    _saveCalendarToDBButton.innerHTML = "Save MMC to DB";
     saveCalendarToDBDiv.appendChild(_saveCalendarToDBButton);
 
     return saveCalendarToDBDiv;

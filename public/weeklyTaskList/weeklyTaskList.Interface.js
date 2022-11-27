@@ -104,12 +104,17 @@ function displayTaskCategory(categoryToDisplay){
     categoryToDisplayDiv.id = `cat_${categoryToDisplay.id}`;
     categoryToDisplayDiv.classList += "container column taskCategory";
 
+    const categoryTitle = document.createElement("div");
+    categoryTitle.classList += "h3";
+    categoryTitle.innerText = "Category";
+    categoryToDisplayDiv.appendChild(categoryTitle);
+
     // Category Header
     const categoryHeader = document.createElement("input");
     categoryHeader.value = `${categoryToDisplay.name}`;
     categoryHeader.disabled = true;
-    categoryHeader.classList += "categoryHeader";
     categoryHeader.id = `catHeader_${categoryToDisplay.id}`;
+    categoryHeader.classList += "categoryHeader";
     categoryToDisplayDiv.appendChild(categoryHeader);
 
     const categoryHeaderButtons = document.createElement("div");
