@@ -3,6 +3,11 @@ import {
 } from "./login.Interface.js";
 
 // Send form info to the server
+// Login Info:
+//      const loginInfo = {
+//          username: <text>,
+//          password: <text>
+//      }
 export async function sendLoginInfoToServer(loginInfo){
     let res;
     await fetch('/api/auth/signin', {
@@ -21,6 +26,9 @@ export async function sendLoginInfoToServer(loginInfo){
 
 
 // Listen for response and advance accordingly
+//      If invalid password - (401 response) display error and refresh after 3seconds
+//      If user not found - (404 response) display error and refresh after 3seconds
+//      If successful - (200 response) save auth info to LocalStorage and advance to dashboard
 export async function handleSendLoginInfoToServerResponse(response, divToUpdate){
     if(response.status === 401){
         // console.log("401 error");
