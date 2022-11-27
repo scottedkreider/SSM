@@ -65,13 +65,14 @@ h1 {
 }
 
 .entryButton {
+    font-size: 1vw;
     background-color: whitesmoke;
     border-radius: 10px;
     border-color: lightskyblue;
     text-align: center;
     font-weight: bold;
     width: 10vw;
-    height: 7vh;
+    height: 5vh;
     z-index: 6;
 }
 
