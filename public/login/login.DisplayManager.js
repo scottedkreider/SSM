@@ -9,5 +9,8 @@ import {
 // Grab the div to hold the login page
 const login_div = document.getElementById("loginDiv");
 
+// Display the login Interface
 displayLoginAccountInformationDiv(login_div);
+
+// Attach the login Event Listeners
 attachLoginEventListeners(login_div);

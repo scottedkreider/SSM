@@ -20,7 +20,7 @@ export async function sendLoginInfoToServer(loginInfo){
 }
 
 
-// Listen for response
+// Listen for response and advance accordingly
 export async function handleSendLoginInfoToServerResponse(response, divToUpdate){
     if(response.status === 401){
         // console.log("401 error");
