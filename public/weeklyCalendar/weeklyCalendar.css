@@ -1,0 +1,132 @@
+@import "../css/index.css";
+
+.calContainer {
+    flex: auto;
+}
+
+#navigationDiv {
+    background-color: lavender;
+    min-height: 75px;
+    height: 9vh;
+}
+
+#calendarHeaderDiv {
+    background-color: lightgreen;
+    min-height: 90px;
+    height: 13vh;
+}
+
+#calendarBodyDiv {
+    background-color: whitesmoke;
+    min-height: 65vh;
+    height: 75vh;
+    overflow: overlay;
+    padding-top: 100px;
+    padding-bottom: 20px;
+
+    font-size: max(1em, 11px);
+}
+
+#calendarDisplay {
+    background-color: lightseagreen;
+    justify-content: space-between;
+
+    overflow: overlay;
+
+    padding-top: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+
+    margin-left: auto;
+    margin-right: auto;
+    width: 75vw;
+    min-width: 500px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px;
+}
+
+.calendarColumn {
+    border-radius: 15px;
+    width: 8vw;
+    justify-content: center;
+}
+
+.calendarColumnHeader {
+    text-align: center;
+    position: absolute;
+    width: 8vw;
+    height: 6vh;
+
+    background-color: rgb(173, 216, 230,90%);
+    border-radius: 15px;
+
+    font-weight: bold;
+    font-size: 1.25vw;
+
+    z-index: 1;
+}
+
+#calendarHourDisplay {
+    width: 4vw;
+    border-radius: 15px;
+}
+
+.calendarHourDisplayHeader {
+    height: 8vh;
+}
+
+.calendarColumnDayDisplay {
+    width: 8vw;
+
+    border-radius: 15px;
+    padding-top: 8vh;
+}
+
+.calendarHourRowTitle {
+    text-align: center;
+    height: 5vh;
+
+    border-top: 1px solid black;
+}
+
+.calendarColumnHourTitle {
+    text-align: center;
+    align-items: center;
+    height: 5vh;
+
+    border-top: 1px solid black;
+}
+
+.inShadow {
+    box-shadow: inset 0 0 10px yellowgreen;
+    background-color: lightcyan;
+}
+
+.inShadow:hover {
+    opacity: 75%;
+}
+
+.outShadow {
+  box-shadow: 0 0 10px black;
+  background-color: cadetblue;
+}
+
+.outShadow:hover {
+    opacity: 75%;
+}
+
+.tableHeaderShadow {
+    box-shadow: 0 0 10px black;
+    background-color: lightblue;
+}
+
+.headerShadow {
+    box-shadow: 0 0 10px black;
+    background-color: mintcream;
+}
