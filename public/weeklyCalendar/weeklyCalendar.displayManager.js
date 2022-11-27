@@ -39,26 +39,33 @@ const HOURS_OF_THE_DAY = {
 const SHADOW_DIRECTION = "inShadow";
 // const SHADOW_DIRECTION = "outShadow";
 
-// const week = {
-//     days: []
-// }
-
-// const dayKeys = Object.keys(DAYS_OF_THE_WEEK);
-// dayKeys.forEach((day) => {
-//     const dayObject = {
-//         dayName: DAYS_OF_THE_WEEK[day],
-//         dayId: day,
-//         hourCheckList: new Array(24).fill(false)
-//     }
-
-//     dayObject.hourCheckList[5] = true;
+function initiateWeeklyCalendar(){
+    if(!localStorage.getItem("weeklyCalendar")){
+        const week = {
+            days: []
+        }
     
-//     week.days.push(dayObject);
-// })
+        const dayKeys = Object.keys(DAYS_OF_THE_WEEK);
+        dayKeys.forEach((day) => {
+            const dayObject = {
+                dayName: DAYS_OF_THE_WEEK[day],
+                dayId: day,
+                hourCheckList: new Array(24).fill(false)
+            }
+    
+            dayObject.hourCheckList[5] = true;
+            
+            week.days.push(dayObject);
+        })
+    
+        localStorage.setItem("weeklyCalendar",JSON.stringify(week));
+    }
+}
 
-// localStorage.setItem("weeklyCalendar",JSON.stringify(week));
 
 function calendarDisplay(){
+    initiateWeeklyCalendar()
+    
     const calendarDisplayDiv = document.createElement("div");
     calendarDisplayDiv.id = "calendarDisplay";
     calendarDisplayDiv.classList += "calContainer";
@@ -165,7 +172,7 @@ function blockClickListener(block) {
 function blockMouseoverListener(block){
     const dayMousedOver = block.id.split("_")[1];
     const hourMousedOver = block.id.split("_")[2];
-    
+
 }
 
 
