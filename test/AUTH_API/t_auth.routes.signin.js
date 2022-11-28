@@ -37,7 +37,7 @@ QUnit.test('(1) Fail to signin due to username not found', assert => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "username": "abcd1234",
+            "username": "abcd12345",
             "password": "scott"
         })
     })
