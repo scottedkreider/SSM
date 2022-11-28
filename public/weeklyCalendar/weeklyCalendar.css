@@ -28,7 +28,7 @@
 }
 
 #calendarDisplay {
-    background-color: lightseagreen;
+    background-color: rgb(203, 222, 245);;
     justify-content: space-between;
 
     overflow: overlay;
@@ -48,7 +48,7 @@
     flex-wrap: nowrap;
 
     border-radius: 20px;
-    box-shadow: 10px 10px 10px;
+    box-shadow: 5px 5px 5px 5px black;;
 }
 
 .calendarColumn {
@@ -106,27 +106,33 @@
 .inShadow {
     box-shadow: inset 0 0 10px yellowgreen;
     background-color: lightcyan;
+    border-radius: 1px;
 }
 
 .inShadow:hover {
     opacity: 75%;
+    border-radius: 1px;
 }
 
 .outShadow {
   box-shadow: 0 0 10px black;
   background-color: cadetblue;
+  border-radius: 1px;
 }
 
 .outShadow:hover {
     opacity: 75%;
+    border-radius: 1px;
 }
 
 .tableHeaderShadow {
     box-shadow: 0 0 10px black;
     background-color: lightblue;
+    border-radius: 3px;
 }
 
 .headerShadow {
     box-shadow: 0 0 10px black;
     background-color: mintcream;
+    border-radius: 3px;
 }

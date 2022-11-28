@@ -1,4 +1,5 @@
 html {
+    padding-left: 1vw;
     scroll-behavior: smooth;
     width: 98vw;
     align-items: center;
@@ -52,7 +53,7 @@ h1 {
     background-color: whitesmoke;
     position: relative;
     z-index: 0;
-    padding-top: 7vh;
+    height: 75vh;
 }
 
 .entryField {
@@ -67,7 +68,7 @@ h1 {
 .entryButton {
     font-size: 1vw;
     background-color: whitesmoke;
-    border-radius: 10px;
+    border-radius: 5px;
     border-color: lightskyblue;
     text-align: center;
     font-weight: bold;
@@ -81,7 +82,7 @@ h1 {
 
 .headerEntryButton {
     background-color: whitesmoke;
-    border-radius: 10px;
+    border-radius: 5px;
     border-color: lightskyblue;
     text-align: center;
     font-weight: bold;

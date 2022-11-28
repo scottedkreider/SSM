@@ -4,34 +4,95 @@ input:disabled {
     border: none;
     color: #000;
     background-color: transparent;
+    width: 10vw;
+    height: 3vh;
 }
 
-.taskCategoryDiv {
-    background-color: lightpink;
-    border-style: solid;
+input {
+    width: 10vw;
+    height: 3vh;
 }
-
 
 .multiMonthCalendarDisplay {
     background-color: whitesmoke;
-    padding-left: 2vw;
-    padding-right: 2vw;
+    padding-left: 4vw;
+    padding-right: 4vw;
 }
 
 .wrapper {
-    background-color: black;
-
+    background-color: rgb(203, 222, 245);
+    width: 85vw;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
-    grid-gap: 1px;
-    grid-auto-rows: minmax(100px, auto);
+    gap: 5px;
+    grid-auto-rows: minmax(50px, auto);
+    border-radius: 15px; 
+
+    font-size: 2vh;
+
+    padding-top: 3vh;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-bottom: 3vh;
+
+    box-shadow: 5px 5px 5px 5px black;
 }
 
 .wrapper > * {
-    background-color: burlywood;
+    background-color: cadetblue;
+    box-shadow: 1px 1px 1px 1px black;
+    font-weight: bold;
+    margin: auto;
+    border-radius: 2px;
+    width: 10vw;
+    height: 15vh;
+    align-items: center;
+    justify-content: center;
 }
+
+#multiMonthCalendarDiv {
+    height: 75vh;
+    overflow: auto;
+    padding-bottom: 10vh;
+    padding-top: 5vh;
+}
+
 
 .container {
     display: flex;
 }
+
+.dayOfTheWeekHeader {
+    display: inline-block;
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+    height: 5vh;
+    padding-top: 1vh;
+    font-size: 2vh;
+}
+
+.mmcButtonsDiv {
+    padding-bottom: 5vh;
+    position: relative;
+    z-index: 50;
+}
+
+.dayDiv:hover {
+    opacity: 75%;
+}
+
+.complete {
+    box-shadow: inset 2px 2px 2px black;
+    background-color: lightgreen;
+    opacity: 75%;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+}
+
+/* #calendarFlexContainer {
+    background-color: red;
+} */

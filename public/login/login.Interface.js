@@ -4,9 +4,15 @@ import {
 } from "./login.divSnippets.js";
 
 export function displayLoginAccountInformationDiv(parentDiv) {
+
+    const loginTitleDiv = document.createElement("h1");
+    loginTitleDiv.innerText = "Login";
+    parentDiv.appendChild(loginTitleDiv);
+
         // Build a div to hold the login form
         const loginAccountInformationForm_div = document.createElement("div");
         loginAccountInformationForm_div.setAttribute("class","row justify-content-center appPadding");
+
 
             // Build a form to enter username and password
             const loginAccountInformationForm_form = document.createElement("form");

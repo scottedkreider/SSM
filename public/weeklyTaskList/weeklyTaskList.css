@@ -1,5 +1,6 @@
 @import "../css/index.css";
 
+
 input:disabled {
     border: none;
     color: #000;
@@ -27,13 +28,20 @@ input:disabled {
     border-radius: 20px;
 }
 
+#weeklyTaskListDiv {
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+
 #weeklyTaskListBodyDiv {
-    background: lightblue;
+    background: rgb(203, 222, 245);
     border-radius: 20px;
     z-index: 1;
     padding-top: 10px;
     padding-bottom: 20px; 
-    box-shadow: 10px 10px 10px;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    box-shadow: 5px 5px 5px 5px black;
 }
 
 .weeklyTaskListBodyDisplayDiv {
@@ -44,7 +52,7 @@ input:disabled {
 
 
 .categoryHeader {
-    color: red;
+    color: black;
 }
 
 
@@ -65,14 +73,14 @@ h1 {
     border-color: black;
     border-width: 1px;
     border-style: solid;
-    padding-bottom: 10px;
     padding-left: 10px;
     padding-right: 10px;
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px 3px black;
 }
 
 .taskItem {
     background: lightyellow;
-    overflow-wrap: normal; 
 }
 
 .done {
@@ -91,7 +99,7 @@ h1 {
 .wtlButton {
     font-size: 0.7vw;
     background-color: whitesmoke;
-    border-radius: 10px;
+    border-radius: 5px;
     border-color: lightskyblue;
     text-align: center;
     font-weight: bold;
@@ -107,3 +115,23 @@ h1 {
     background-color: lightgreen;
 }
 
+input.categoryHeader {
+    font-weight: bold;
+    font-size: 3vh;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-style: dotted;
+    border-width: 1px;
+}
+
+#appDiv {
+    height: 75vh;
+    overflow: auto;
+}
+
+textarea:disabled {
+    background-color: none;
+    resize: none;
+    border: none;
+    color: black;
+}

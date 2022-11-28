@@ -1,4 +1,8 @@
 export function displayCreateAccountDiv(parentDiv) {
+    const loginTitleDiv = document.createElement("h1");
+    loginTitleDiv.innerText = "Create Account";
+    parentDiv.appendChild(loginTitleDiv);
+
     // Create the display for the form to enter username, email, and password
     const createAccountForm_div = document.createElement("div");
     createAccountForm_div.setAttribute("class","row justify-content-center");

@@ -1,1 +1,9 @@
 @import "../css/index.css";
+
+#loginDiv {
+    padding-top: 5vh;
+}
+
+h1 {
+    color: navy;
+}

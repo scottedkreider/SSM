@@ -35,7 +35,7 @@ export default class MultiMonthCalendarDisplay {
             `;
 
         const mmcButtonsDiv = document.createElement("div");
-        mmcButtonsDiv.classList += "container";
+        mmcButtonsDiv.classList += "container mmcButtonsDiv";
         mmcButtonsDiv.appendChild(deleteMMCDiv())
         mmcButtonsDiv.appendChild(checkAllDaysDiv())
         mmcButtonsDiv.appendChild(editDailyInfoDiv())

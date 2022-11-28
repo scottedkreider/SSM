@@ -87,7 +87,8 @@ export function mmcCalendarDiv(calendarDiv, _mmcToDisplay){
     // Build day of the Week header
     for(var i = 1; i < 8; i++){
         var dayElt = document.createElement("div");
-        dayElt.innerHTML = `${DayOfTheWeek[i]}`;
+        dayElt.innerText = `${DayOfTheWeek[i]}`;
+        dayElt.classList += "dayOfTheWeekHeader";
         mmcCalendar.appendChild(dayElt);
     }
 
@@ -95,7 +96,7 @@ export function mmcCalendarDiv(calendarDiv, _mmcToDisplay){
     var firstDayOfTheWeek = _mmc.ListOfDays[0].DayOfTheWeek7;
     for(var i = 0; i < firstDayOfTheWeek - 1; i++){
         var holdElt = document.createElement("div");
-        holdElt.innerHTML = "";
+        holdElt.innerText = "";
         mmcCalendar.appendChild(holdElt);
     }
 
@@ -114,12 +115,14 @@ export function mmcCalendarDiv(calendarDiv, _mmcToDisplay){
 function mmcCalendarDayDiv(day, index){
 
     var calDayDiv = document.createElement("div");
+    calDayDiv.classList += "dayDiv";
     calDayDiv.setAttribute("id",`day_${index}`);
-    calDayDiv.innerHTML = `${day.Month12}/${day.DayOfTheMonth}`;
+    calDayDiv.innerText = `${day.Month12}/${day.DayOfTheMonth}`;
 
     var cBoxDiv = document.createElement("div");
     if(day.Completed === true){
-        cBoxDiv.innerHTML = "complete";
+        cBoxDiv.innerHTML += "&#10004";
+        calDayDiv.classList.add("complete");
     } else {
         var cBox = document.createElement("input");
         cBox.setAttribute("type","checkbox");
@@ -129,7 +132,7 @@ function mmcCalendarDayDiv(day, index){
     }
 
     var infoDiv = document.createElement("div");
-    for(var i = 0; i < 5; i++){
+    for(var i = 0; i < 3; i++){
         var infoField = document.createElement("input");
         infoField.setAttribute("value",`${day.Info[i] ? day.Info[i] : ""}`);
         infoField.setAttribute("type","text");

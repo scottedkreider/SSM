@@ -105,7 +105,7 @@ function displayTaskCategory(categoryToDisplay){
     categoryToDisplayDiv.classList += "container column taskCategory";
 
     const categoryTitle = document.createElement("div");
-    categoryTitle.classList += "h3";
+    categoryTitle.classList += "h4";
     categoryTitle.innerText = "Category";
     categoryToDisplayDiv.appendChild(categoryTitle);
 

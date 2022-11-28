@@ -39,11 +39,12 @@ export function checkOffDaysListener(_mmc){
                 if(_d < yesterday){
                     day.Completed = true;
                     localStorage.setItem("_multiMonthCalendar",JSON.stringify(_mmc));
-                    checkbox.parentElement.innerHTML = "complete";
+                    checkbox.parentElement.innerHTML = "&#10004";
                 } else {
                     checkbox.checked = false;
                 }
             }
+            displayMultiMonthCalendar();
         });
     })
 }

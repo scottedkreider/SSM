@@ -86,9 +86,8 @@ function taskDisplayRow(categoryId, taskToDisplay){
 
     const nameDataDiv = document.createElement("div");
     nameDataDiv.classList += "doneDiv";
-    const nameData = document.createElement("input");
+    const nameData = document.createElement("textarea");
     nameData.id = `taskname_${categoryId}_${taskToDisplay.id}`;
-    nameData.type = "input";
     nameData.disabled = "true";
     nameData.value = `${taskToDisplay.name}`
     nameDataDiv.appendChild(nameData)

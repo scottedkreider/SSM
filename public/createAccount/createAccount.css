@@ -1,1 +1,10 @@
 @import "../css/index.css";
+
+#createAccountDiv {
+    height: 65vh;
+    padding-top: 5vh;
+}
+
+h1 {
+    color: maroon;
+}
