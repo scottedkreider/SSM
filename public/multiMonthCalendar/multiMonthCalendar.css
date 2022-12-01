@@ -39,7 +39,7 @@ input {
 }
 
 .wrapper > * {
-    background-color: cadetblue;
+    background-color: #5f9ea0;
     box-shadow: 1px 1px 1px 1px black;
     font-weight: bold;
     margin: auto;
