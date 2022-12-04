@@ -1,3 +1,4 @@
+// Returns a button to add a new task category to the weekly task list
 export function addTaskCategoryButton(){
     const addTaskCategoryButtonDiv = document.createElement("div");
 
@@ -11,7 +12,7 @@ export function addTaskCategoryButton(){
     return addTaskCategoryButtonDiv;
 }
 
-
+// Returns a button to save the LocalStorage dataset to the database
 export function saveTaskListToDBButton(){
     const saveTaskListToDBButtonDiv = document.createElement("div");
 
@@ -25,7 +26,7 @@ export function saveTaskListToDBButton(){
     return saveTaskListToDBButtonDiv;
 }
 
-
+// Returns a button to edit a specific task category
 export function editCategoryButton(categoryId){
     const editCategoryButton = document.createElement("button");
     editCategoryButton.classList += "editTaskCategory wtlButton";
@@ -35,7 +36,7 @@ export function editCategoryButton(categoryId){
     return editCategoryButton;
 }
 
-
+// Returns a button to delete a specific task category
 export function deleteCategoryButton(categoryId){
     const deleteCategoryButton = document.createElement("button");
     deleteCategoryButton.classList += "deleteTaskCategory wtlButton deleteButton";
@@ -45,7 +46,7 @@ export function deleteCategoryButton(categoryId){
     return deleteCategoryButton;
 }
 
-
+// Returns a button to add a task to a specific category
 export function addTaskButton(categoryId){
     const addTaskButton = document.createElement("button");
     addTaskButton.classList += "addTask wtlButton";
@@ -56,7 +57,7 @@ export function addTaskButton(categoryId){
 }
 
 
-
+// Returns a div to hold the task display
 export function taskToDisplayDiv(categoryId, taskToDisplay){
     // Div to return to the attach to parent div
     const taskToDisplayDiv = document.createElement("div");
@@ -67,9 +68,9 @@ export function taskToDisplayDiv(categoryId, taskToDisplay){
 }
 
 // find row c_categoryId
-
 // find row t_taskId
 
+// returns a div with the entire task display row
 function taskDisplayRow(categoryId, taskToDisplay){
     const rowToDisplay = document.createElement("div");
     rowToDisplay.id = `t_${taskToDisplay.id}`;

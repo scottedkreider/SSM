@@ -1,4 +1,5 @@
-
+// Add a new task category to the dataset in local storage
+//      With the given categoryName
 export function addNewTaskCategory(categoryName){
     const weeklyTaskList = JSON.parse(localStorage.getItem("_weeklyTaskList"));
 
@@ -26,6 +27,7 @@ export function addNewTaskCategory(categoryName){
 }
 
 
+// Delete the specified task category from the dataset in LocalStorage
 export function deleteTaskCategory(categoryId){
     const weeklyTaskList = JSON.parse(localStorage.getItem("_weeklyTaskList"));
     weeklyTaskList.categoryList.splice(weeklyTaskList.categoryList.findIndex(function(i){
@@ -35,7 +37,7 @@ export function deleteTaskCategory(categoryId){
     localStorage.setItem("_weeklyTaskList",JSON.stringify(weeklyTaskList));
 }
 
-
+// Add new task to the specified task category in the dataset in LocalStorage
 export function addNewTaskToTaskCategory(taskCategoryId, taskName){
     const weeklyTaskList = JSON.parse(localStorage.getItem("_weeklyTaskList"));
     const categoryRow = weeklyTaskList.categoryList.find(category => category.id == taskCategoryId);
@@ -54,7 +56,7 @@ export function addNewTaskToTaskCategory(taskCategoryId, taskName){
     localStorage.setItem("_weeklyTaskList",JSON.stringify(weeklyTaskList));
 }
 
-
+// Remove the specified task from the specified task category in the dataset in LocalStorage
 export function deleteTaskFromTaskCategory(categoryId, taskId){
     const weeklyTaskList = JSON.parse(localStorage.getItem("_weeklyTaskList"));
     const categoryRow = weeklyTaskList.categoryList.find(category => category.id == categoryId);

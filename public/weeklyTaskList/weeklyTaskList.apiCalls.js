@@ -1,4 +1,5 @@
-
+// Send the _weeklyTaskList from LocalStorage to the database
+//      Uses authorization info from LocalStorage
 export async function sendWTLToDatabase() {
     await fetch('/api/weeklyTaskList', {
         method: "POST",

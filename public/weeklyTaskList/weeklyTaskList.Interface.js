@@ -25,6 +25,8 @@ export function weeklyTaskListHeaderDiv(){
 
 ///////////////////////////////////////
 // WTL Body
+
+// Returns a div with the entire body of the weekly task list
 export function weeklyTaskListBodyDiv(){
     const weeklyTaskListBodyDiv = document.createElement("div");
     weeklyTaskListBodyDiv.id = "weeklyTaskListBodyDiv";
@@ -50,6 +52,8 @@ export function weeklyTaskListBodyDiv(){
     return weeklyTaskListBodyDiv;
 }
 
+// Initializes a weekly task list with 2 categories and 2 tasks per category
+//      Used upon initial creation of a weekly task list
 function initializeTaskList() {
     const taskNew1 = {
         done: 0,

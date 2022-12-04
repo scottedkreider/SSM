@@ -11,12 +11,9 @@ import {
     sendWTLToDatabase
 } from "./weeklyTaskList.apiCalls.js";
 
-
+// Save _weeklyTaskList dataset in LocalStorage to the database upon button press
 function connectSaveTaskListToDBListener(divToRefresh) {
     document.getElementById("saveTaskListToDBButton").addEventListener("click", () => {
-        // On click
-        //      Add new row with places to fill in the new info for the task category at the bottom of the category list (but before MISC)
-
         if (confirm("Are you sure you want to save?")) {
             sendWTLToDatabase();
         }
@@ -24,6 +21,7 @@ function connectSaveTaskListToDBListener(divToRefresh) {
     });
 }
 
+// Add new task category to the weekly task list upon button press
 function connectAddNewTaskCategoryListener(divToRefresh) {
     document.getElementById("addTaskCategoryButton").addEventListener("click", () => {
         // On click
@@ -34,6 +32,7 @@ function connectAddNewTaskCategoryListener(divToRefresh) {
     });
 }
 
+// Delete task category from the weekly task list upon botton press
 function connectDeleteTaskCategoryListener(divToRefresh) {
     const deleteTaskCategoryButtons = document.querySelectorAll(".deleteTaskCategory");
     deleteTaskCategoryButtons.forEach((button) => {
@@ -51,7 +50,7 @@ function connectDeleteTaskCategoryListener(divToRefresh) {
     })
 }
 
-
+// Edit task category information upon button press
 function connectEditTaskCategoryListener(divToRefresh) {
 
     const editTaskCategoryButtons = document.querySelectorAll(".editTaskCategory");
@@ -89,6 +88,7 @@ function connectEditTaskCategoryListener(divToRefresh) {
     })
 }
 
+// Add new task, with a given name, to a specified task category upon button press
 function connectAddNewTaskToTaskCategoryListener(divToRefresh) {
     const addTaskButtons = document.querySelectorAll(".addTask");
     addTaskButtons.forEach((button) => {
@@ -107,7 +107,7 @@ function connectAddNewTaskToTaskCategoryListener(divToRefresh) {
     })
 }
 
-
+// Edit task information in place upon button press
 function connectEditTaskInTaskCategoryListener(divToRefresh) {
     const editTaskCategoryButtons = document.querySelectorAll(".editTask");
     editTaskCategoryButtons.forEach((button) => {
@@ -152,6 +152,7 @@ function connectEditTaskInTaskCategoryListener(divToRefresh) {
     })
 }
 
+// Delete task from specified task category upon button press
 function connectDeleteTaskFromTaskCategoryListener(divToRefresh) {
     const deleteTaskButtons = document.querySelectorAll(".deleteTask");
     deleteTaskButtons.forEach((button) => {
@@ -169,7 +170,7 @@ function connectDeleteTaskFromTaskCategoryListener(divToRefresh) {
     })
 }
 
-
+// Toggle and update the data in LocalStorage when a checkbox is changed
 function connectCheckBoxListener(divToRefresh) {
     const checkBoxes = document.querySelectorAll(".doneCheckBox");
     checkBoxes.forEach((checkbox) => {
@@ -199,6 +200,8 @@ function connectCheckBoxListener(divToRefresh) {
 // id #
 // class .
 
+
+// An exposed function that connects all the event listeners to the weekly task list page
 export function connectWeeklyTaskListEventListeners(divToRefresh) {
     connectSaveTaskListToDBListener(divToRefresh);
     connectAddNewTaskCategoryListener(divToRefresh);
