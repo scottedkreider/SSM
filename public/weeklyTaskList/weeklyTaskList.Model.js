@@ -67,3 +67,54 @@ export function deleteTaskFromTaskCategory(categoryId, taskId){
     categoryRow.numberOfActiveTasks--;
     localStorage.setItem("_weeklyTaskList",JSON.stringify(weeklyTaskList));
 }
+
+
+// Initializes a weekly task list with 2 categories and 2 tasks per category
+//      Used upon initial creation of a weekly task list
+export function initializedTaskList() {
+    const taskNew1 = {
+        done: 0,
+        id: 1,
+        name: "example task name",
+        worktime: ["2022-12-24"],
+        workstarttime: "11:20",
+        workduration: 2,
+        duedate: "2022-12-25",
+        numberOfUpdates: 0
+    }
+
+    const taskNew2 = {
+        done: 0,
+        id: 2,
+        name: "example task name",
+        worktime: ["2022-12-24"],
+        workstarttime: "11:20",
+        workduration: 3,
+        duedate: "2022-12-25",
+        numberOfUpdates: 0
+    }
+
+    const categoryNew1 = {
+        name: "example category name 1",
+        id: 1,
+        idIncrementer: 2,
+        numberOfActiveTasks: 2,
+        tasks: [taskNew1, taskNew2]
+    }
+
+    const categoryNew2 = {
+        name: "example category name 2",
+        id: 2,
+        idIncrementer: 2,
+        numberOfActiveTasks: 2,
+        tasks: [taskNew1, taskNew2]
+    }
+
+    const weeklyTaskListNew = {
+        idIncrementer: 2,
+        numberOfActiveCategories: 1,
+        categoryList: [categoryNew1, categoryNew2]
+    }
+
+    return weeklyTaskListNew;
+}
