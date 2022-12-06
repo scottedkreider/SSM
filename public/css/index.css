@@ -55,6 +55,7 @@ h1 {
     z-index: 0;
     height: 78vh;
     overflow: auto;
+    overflow-x: hidden;
 }
 
 .entryField {
