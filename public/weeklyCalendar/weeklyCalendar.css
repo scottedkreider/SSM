@@ -19,10 +19,9 @@
 #calendarBodyDiv {
     background-color: whitesmoke;
     min-height: 65vh;
-    height: 75vh;
     overflow: overlay;
     padding-top: 100px;
-    padding-bottom: 20px;
+    padding-bottom: 75px;
 
     font-size: max(1em, 11px);
 }
@@ -135,4 +134,8 @@
     box-shadow: 0 0 10px black;
     background-color: mintcream;
     border-radius: 3px;
+}
+
+#weeklyCalendarDiv {
+    overflow: auto;
 }

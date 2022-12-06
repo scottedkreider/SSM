@@ -22,6 +22,13 @@ module.exports = function(app) {
         res.render(path.join("pages/createAccount"));
     })
 
+    // About route
+    app.get('/about',(req, res) => {
+        // console.log('about');
+        res.render(path.join("pages/about"));
+    })
+    
+
     // Dashboard route
     // Verify access
     app.get('/dashboard',

@@ -51,7 +51,7 @@ input {
 }
 
 #multiMonthCalendarDiv {
-    height: 75vh;
+    /* height: 75vh; */
     overflow: auto;
     padding-bottom: 10vh;
     padding-top: 5vh;
